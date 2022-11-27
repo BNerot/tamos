@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.TimeSettings &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tamos.MILPModel" href="tamos.MILPModel.html" />
+    <link rel="prev" title="tamos.Hub" href="tamos.Hub.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.MILPModel.html" title="tamos.MILPModel"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tamos.Hub.html" title="tamos.Hub"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../gathering_components.html" accesskey="U">Gathering components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.TimeSettings</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-timesettings">
+<h1>tamos.TimeSettings<a class="headerlink" href="#tamos-timesettings" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.TimeSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.</span></span><span class="sig-name descname"><span class="pre">TimeSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.TimeSettings" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.TimeSettings.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.TimeSettings.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines temporal parameters used for the optimization of energy systems.
+Provide helper function to implement a reduced-complexity temporal approach regarding system operation.
+See examples section for in-depth understanding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>int</em>) – The length of the operation period.</p></li>
+<li><p><strong>step_value</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default 1</em>) – Length of each time step of the operation period, in hours.
+Required to be consistent with some component physical properties.</p></li>
+<li><p><strong>system_lifetime</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default 40</em>) – Number of periods considered for economic amortization of components.
+Is related to the property “Discount rate (%)” of components. See method <cite>component.compute_actualized_cost</cite>.
+The default value <cite>40</cite> is a typical value relevant for an annual operation, i.e. such that <cite>n</cite> * <cite>step_value</cite> = 8760</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time_settings</span> <span class="o">=</span> <span class="n">TimeSettings</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">8760</span><span class="p">,</span> <span class="n">step_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">system_lifetime</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The operation period has a length of <cite>n</cite> = 8760.
+Each time serie parameter of components must be of length <cite>n</cite>. Their values last all 1 hour (<cite>step_value</cite> = 1).
+8760 values of 1 hour is one year.
+Economic amortization is calculated for 30 periods, i.e. 30 years.
+Up to now, <cite>time_settings</cite> does not define any relevant time_step for operation. They must be added using the methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>add_regular</p></li>
+<li><p>add_extreme_values</p></li>
+<li><p>add_large_diff</p></li>
+</ul>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time_settings</span><span class="o">.</span><span class="n">add_regular</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Every index multiple of 5 is selected for operation.
+At this point, the three first time steps (for instance) are defined by the following sets of indexes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>{0, 1, 2, 3, 4}</p></li>
+<li><p>{5, 6, 7, 8, 9}</p></li>
+<li><p>{10, 11, 12, 13, 14}</p></li>
+<li><p>…</p></li>
+</ul>
+</div></blockquote>
+<p>This leads to consider approximately 8760/5 = 1752 time steps for operation.
+Decision variables are indexed on the first element of these index sets.
+Each parameter of the model given as a numpy.ndarray instance of length 8760 is averaged according to these time steps,
+defining a new array <cite>new_array</cite> of length 1752. For instance:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>new_array[0] = array[0:5].mean()</p></li>
+<li><p>new_array[1] = array[5:10].mean()</p></li>
+<li><p>new_array[2] = array[10:15].mean()</p></li>
+<li><p>…</p></li>
+</ul>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time_settings</span><span class="o">.</span><span class="n">add_extreme_values</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">load_values</span><span class="p">,</span> <span class="n">number_max</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The indexes of the 3 largest values of <cite>load_values</cite> are added to the operation temporal vector, splitting existing time steps.
+For instance, if 2 is one of these 3 indexes, the sets of indexes defining time steps become:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>{0, 1}</p></li>
+<li><p>{2}</p></li>
+<li><p>{3, 4}</p></li>
+<li><p>{5, 6, 7, 8, 9}</p></li>
+<li><p>{10, 11, 12, 13, 14}</p></li>
+<li><p>…</p></li>
+</ul>
+</div></blockquote>
+<p>Now, any array will be average according to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>new_array[0] = array[0:2].mean()</p></li>
+<li><p>new_array[1] = array[2]</p></li>
+<li><p>new_array[2] = array[3:5].mean()</p></li>
+<li><p>new_array[3] = array[5:10].mean()</p></li>
+<li><p>…</p></li>
+</ul>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time_settings</span><span class="o">.</span><span class="n">add_extreme_values</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">temperature_values</span><span class="p">,</span> <span class="n">number_min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number_max</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The indexes of the two smallest and three largest values of <cite>temperature_values</cite> are added to the operation temporal vector.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.TimeSettings.__init__" title="tamos.TimeSettings.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(n[, step_value, system_lifetime])</p></td>
+<td><p>Defines temporal parameters used for the optimization of energy systems.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.TimeSettings.add" title="tamos.TimeSettings.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(indexes)</p></td>
+<td><p>Adds specific indexes to the operation temporal vector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.TimeSettings.add_extreme_values" title="tamos.TimeSettings.add_extreme_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_extreme_values</span></code></a>(array[, number_min, ...])</p></td>
+<td><p>Add the time steps corresponding to minimum and maximum values of an array to the operation temporal vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.TimeSettings.add_large_diff" title="tamos.TimeSettings.add_large_diff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_large_diff</span></code></a>(array, number_max)</p></td>
+<td><p>Apply 'add_extreme_values' to the absolute value of the temporal derivative of 'array'.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.TimeSettings.add_regular" title="tamos.TimeSettings.add_regular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_regular</span></code></a>(step[, offset])</p></td>
+<td><p>Add every multiple of <cite>step</cite> to the operation temporal vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.TimeSettings.plot_array_aggregation" title="tamos.TimeSettings.plot_array_aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_array_aggregation</span></code></a>(array)</p></td>
+<td><p>Plot the aggregated version of an array, aggregation being performed  according to the <cite>time_steps</cite> attribute.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.TimeSettings.prepare_array" title="tamos.TimeSettings.prepare_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_array</span></code></a>(array[, raise_error])</p></td>
+<td><p>Checks that array length complies with the length of the operation period.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.TimeSettings.time_steps" title="tamos.TimeSettings.time_steps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_steps</span></code></a></p></td>
+<td><p>Presents each time step of the temporal operation vector defined by its set of indexes.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.TimeSettings.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indexes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.TimeSettings.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds specific indexes to the operation temporal vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indexes</strong> (<em>int</em><em> or </em><em>list</em><em> of </em><em>int</em>) – All values greater than <cite>n</cite> will be ignored.
+Each value of <cite>indexes</cite> defines a new time step,
+i.e. time series parameters of components are not averaged on these indexes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.TimeSettings.add_extreme_values">
+<span class="sig-name descname"><span class="pre">add_extreme_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.TimeSettings.add_extreme_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the time steps corresponding to minimum and maximum values of an array to the operation temporal vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> (<em>numpy.ndarray</em>) – </p></li>
+<li><p><strong>number_min</strong> (<em>int</em><em>, </em><em>optional</em>) – The indexes of the <cite>number_min</cite> (<cite>numer_max</cite>) smallest (largest) values of <cite>array</cite>
+will be added to the operation temporal vector.</p></li>
+<li><p><strong>number_max</strong> (<em>int</em><em>, </em><em>optional</em>) – The indexes of the <cite>number_min</cite> (<cite>numer_max</cite>) smallest (largest) values of <cite>array</cite>
+will be added to the operation temporal vector.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.TimeSettings.add_large_diff">
+<span class="sig-name descname"><span class="pre">add_large_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_max</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.TimeSettings.add_large_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply ‘add_extreme_values’ to the absolute value of the temporal derivative of ‘array’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> (<em>numpy.ndarray</em>) – </p></li>
+<li><p><strong>number_max</strong> (<em>int</em>) – The indexes of the <cite>number_max</cite> largest values to be added to the operation temporal vector.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Temporal derivative of <cite>array</cite> is d_array defined as:</dt><dd><p>d_array(t) = abs(array(t+1)-array(t))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.TimeSettings.add_regular">
+<span class="sig-name descname"><span class="pre">add_regular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.TimeSettings.add_regular" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add every multiple of <cite>step</cite> to the operation temporal vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>step</strong> (<em>int</em>) – </p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>&gt;=0</em><em>, </em><em>default 0</em>) – Shifts the time steps selection by an amount of <cite>offset</cite> values.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.TimeSettings.plot_array_aggregation">
+<span class="sig-name descname"><span class="pre">plot_array_aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.TimeSettings.plot_array_aggregation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the aggregated version of an array, aggregation being performed  according to the <cite>time_steps</cite> attribute.</p>
+<p>This aggregation is how arrays are dealt with in <cite>MILPModel</cite> instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>array</strong> (<em>numpy.ndarray</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.TimeSettings.prepare_array">
+<span class="sig-name descname"><span class="pre">prepare_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.TimeSettings.prepare_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks that array length complies with the length of the operation period.
+If array is too long, this method acts depending on <cite>raise_error</cite>.
+If array is too short, an attributeError is raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> (<em>numpy.ndarray</em>) – The array to format.</p></li>
+<li><p><strong>raise_error</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default False</em>) – <p>Describes how <cite>array</cite> is processed when its length exceeds the length of the operation period:</p>
+<ul>
+<li><p>If True, an AttributeError is raised.</p></li>
+<li><p>If False, <cite>array</cite> is sliced so that its first n elements are returned.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>* AttributeError if <cite>raise_error</cite> is True and array is too long, or array is too short.</p></li>
+<li><p>* The first n values of <cite>array</cite> otherwise.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.TimeSettings.time_steps">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">time_steps</span></span><a class="headerlink" href="#tamos.TimeSettings.time_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Presents each time step of the temporal operation vector defined by its set of indexes.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.TimeSettings</a><ul>
+<li><a class="reference internal" href="#tamos.TimeSettings"><code class="docutils literal notranslate"><span class="pre">TimeSettings</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.TimeSettings.__init__"><code class="docutils literal notranslate"><span class="pre">TimeSettings.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.TimeSettings.add"><code class="docutils literal notranslate"><span class="pre">TimeSettings.add()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.TimeSettings.add_extreme_values"><code class="docutils literal notranslate"><span class="pre">TimeSettings.add_extreme_values()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.TimeSettings.add_large_diff"><code class="docutils literal notranslate"><span class="pre">TimeSettings.add_large_diff()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.TimeSettings.add_regular"><code class="docutils literal notranslate"><span class="pre">TimeSettings.add_regular()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.TimeSettings.plot_array_aggregation"><code class="docutils literal notranslate"><span class="pre">TimeSettings.plot_array_aggregation()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.TimeSettings.prepare_array"><code class="docutils literal notranslate"><span class="pre">TimeSettings.prepare_array()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.TimeSettings.time_steps"><code class="docutils literal notranslate"><span class="pre">TimeSettings.time_steps</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tamos.Hub.html"
+                          title="previous chapter">tamos.Hub</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tamos.MILPModel.html"
+                          title="next chapter">tamos.MILPModel</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.TimeSettings.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.MILPModel.html" title="tamos.MILPModel"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tamos.Hub.html" title="tamos.Hub"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../gathering_components.html" >Gathering components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.TimeSettings</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

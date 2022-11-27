@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.element.FuelVector &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tamos.element.ThermalVector" href="tamos.element.ThermalVector.html" />
+    <link rel="prev" title="tamos.element.ElectricityVector" href="tamos.element.ElectricityVector.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.element.ThermalVector.html" title="tamos.element.ThermalVector"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tamos.element.ElectricityVector.html" title="tamos.element.ElectricityVector"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../element.html" accesskey="U">Energy vectors</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.element.FuelVector</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-element-fuelvector">
+<h1>tamos.element.FuelVector<a class="headerlink" href="#tamos-element-fuelvector" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.element.FuelVector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.element.</span></span><span class="sig-name descname"><span class="pre">FuelVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exergy_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.element.FuelVector" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.element.FuelVector.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exergy_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.element.FuelVector.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>A FuelVector instance may describe every energy vector whose exergy factor does not depend on a temperature
+(i.e. ThermalVector, ThermalVectorPair) or is not unity (i.e. ElectricityVector).
+Power is exchanged in kW.</p>
+<p>These vectors are usually associated with a combustion flame temperature which can be used by the user
+to define the exergy factor according to:
+exergy_factor = 1 - dead_state_temperature / flame temperature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exergy_factor</strong> (<em>float</em>) – 0 &lt;= exergy_factor</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>1. The dead state temperature is the reference temperature for calculation of exergy factor of ThermalVectorPair and ThermalVector instances.
+It can be modified using the <cite>set_dead_state_temperature</cite> function of tamos.element.
+2. Some typical flame temperatures are stored in the class attribute <cite>FuelVector.typical_flame_temperature</cite> (natural gas, biomass).
+3. Power flows related to a FuelVector take for reference the lower heating value of the fuel. This impacts the efficiency
+models in production components.
+4. The exergy factor can be redefined using the <cite>exergy_factor</cite> attribute.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.element.FuelVector.__init__" title="tamos.element.FuelVector.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(exergy_factor[, name])</p></td>
+<td><p>A FuelVector instance may describe every energy vector whose exergy factor does not depend on a temperature (i.e.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.element.FuelVector.get_vectors" title="tamos.element.FuelVector.get_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_vectors</span></code></a>()</p></td>
+<td><p>Returns this instance.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.element.FuelVector.exergy_factor" title="tamos.element.FuelVector.exergy_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exergy_factor</span></code></a></p></td>
+<td><p>Quantity of exergy associated with a 1 kW power flow of this element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.element.FuelVector.name" title="tamos.element.FuelVector.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name of the instance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">typical_flame_temperature</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.element.FuelVector.exergy_factor">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exergy_factor</span></span><a class="headerlink" href="#tamos.element.FuelVector.exergy_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quantity of exergy associated with a 1 kW power flow of this element.
+Theoretically positive, usually smaller than 1. In kW/kW.</p>
+<p>int, float or numpy.ndarray
+0 &lt;= exergy_factor</p>
+<p class="rubric">Notes</p>
+<p>FuelVector instances are exchanged between components considering their LHV value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.element.FuelVector.get_vectors">
+<span class="sig-name descname"><span class="pre">get_vectors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.element.FuelVector.get_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns this instance.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.element.FuelVector.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#tamos.element.FuelVector.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the instance</p>
+<p>This name is used in MILP model description.</p>
+<p>str
+names must not exceed 255 characters,
+all of which must be alphanumeric (a-z, A-Z, 0-9) or one of these symbols:
+! ” # $ % &amp; , . ; ? &#64; _ ‘ ’ { } ~.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.element.FuelVector</a><ul>
+<li><a class="reference internal" href="#tamos.element.FuelVector"><code class="docutils literal notranslate"><span class="pre">FuelVector</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.element.FuelVector.__init__"><code class="docutils literal notranslate"><span class="pre">FuelVector.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.element.FuelVector.exergy_factor"><code class="docutils literal notranslate"><span class="pre">FuelVector.exergy_factor</span></code></a></li>
+<li><a class="reference internal" href="#tamos.element.FuelVector.get_vectors"><code class="docutils literal notranslate"><span class="pre">FuelVector.get_vectors()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.element.FuelVector.name"><code class="docutils literal notranslate"><span class="pre">FuelVector.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tamos.element.ElectricityVector.html"
+                          title="previous chapter">tamos.element.ElectricityVector</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tamos.element.ThermalVector.html"
+                          title="next chapter">tamos.element.ThermalVector</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.element.FuelVector.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.element.ThermalVector.html" title="tamos.element.ThermalVector"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tamos.element.ElectricityVector.html" title="tamos.element.ElectricityVector"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../element.html" >Energy vectors</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.element.FuelVector</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

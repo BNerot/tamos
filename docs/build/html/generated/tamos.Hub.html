@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.Hub &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tamos.TimeSettings" href="tamos.TimeSettings.html" />
+    <link rel="prev" title="Gathering components" href="../gathering_components.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.TimeSettings.html" title="tamos.TimeSettings"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../gathering_components.html" title="Gathering components"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../gathering_components.html" accesskey="U">Gathering components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.Hub</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-hub">
+<h1>tamos.Hub<a class="headerlink" href="#tamos-hub" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.Hub">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.</span></span><span class="sig-name descname"><span class="pre">Hub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">components</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">components_assemblies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.Hub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gather components and allow power exchanges through a dedicated interface.</p>
+<p>Enable simple definition of MILP constraints using the <cite>components_assemblies</cite> and <cite>interface_masks</cite> attributes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.Hub.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">components</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">components_assemblies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.Hub.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>components</strong> (<em>list</em><em> of </em><em>storage</em><em>, </em><em>production</em><em> or </em><em>element_IO instances</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>components_assemblies</strong> (<em>list</em><em> of </em><em>3-tuple objects</em><em> (</em><em>n_min</em><em>, </em><em>n_max</em><em>, </em><em>components</em><em>)</em><em>, </em><em>optional</em>) – <p>Each 3-tuple is such that:</p>
+<ul>
+<li><p><cite>n_min</cite> (<cite>n_max</cite>) is the minimum (maximum) number of components from <cite>components</cite> that must be installed in the hub.</p></li>
+<li><dl class="simple">
+<dt><cite>components</cite> is a component or list of production, storage or element_IO components.</dt><dd><p>If one component of <cite>components</cite> is not one of hub components,
+the 3-tuple (n_min, n_max, components) is ignored during constraints declaration.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+<li><p><strong>interface_masks</strong> (<em>list</em><em> of </em><em>InterfaceMask instances</em><em>, </em><em>optional</em>) – Instances in <cite>interface_masks</cite> that do not refer to a component of the hub will be ignored during constraints declaration.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tms</span><span class="o">.</span><span class="n">Hub</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="n">heat_load_1</span><span class="p">,</span> <span class="n">heat_load_2</span><span class="p">,</span> <span class="n">heat_load_3</span><span class="p">,</span> <span class="n">electric_heater_1</span><span class="p">,</span> <span class="n">electric_heater_2</span><span class="p">,</span> <span class="n">electricity_grid</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="n">components_assemblies</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">heat_load_1</span><span class="p">,</span> <span class="n">heat_load_2</span><span class="p">]),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heat_load_3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">electric_heater_1</span><span class="p">,</span> <span class="n">electric_heater_2</span><span class="p">])])</span>
+</pre></div>
+</div>
+<p>At least one of the first and second loads must be used.
+The third load must be used. At most one of the two heaters must be used.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tms</span><span class="o">.</span><span class="n">Hub</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="n">heat_load</span><span class="p">,</span> <span class="n">electric_heater</span><span class="p">,</span> <span class="n">electricity_grid</span><span class="p">,</span> <span class="n">heat_grid</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="n">components_assemblies</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">electric_heater</span><span class="p">,</span> <span class="n">heat_grid</span><span class="p">]),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heat_load</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>The load must be used. Either electric_heater or heat_grid can be used.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.Hub.__init__" title="tamos.Hub.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([name, components, ...])</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.Hub.change_components" title="tamos.Hub.change_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_components</span></code></a>(components[, add, remove])</p></td>
+<td><p>Change the components that can be installed in the hub.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.Hub.change_interface_masks" title="tamos.Hub.change_interface_masks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_interface_masks</span></code></a>(interface_masks[, ...])</p></td>
+<td><p>Change the InterfaceMasks instances related to the hub.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.Hub.describe" title="tamos.Hub.describe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">describe</span></code></a>()</p></td>
+<td><p>Show an exhaustive description of the hub.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.Hub.components" title="tamos.Hub.components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">components</span></code></a></p></td>
+<td><p>production, storage and element_IO components in the hub.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tamos.Hub.components_assemblies.html#tamos.Hub.components_assemblies" title="tamos.Hub.components_assemblies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">components_assemblies</span></code></a></p></td>
+<td><p>Components assemblies of the hub.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.Hub.element_IOs" title="tamos.Hub.element_IOs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_IOs</span></code></a></p></td>
+<td><p>element_IO components in the hub.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.Hub.interface_masks" title="tamos.Hub.interface_masks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interface_masks</span></code></a></p></td>
+<td><p>InterfaceMask instances of the hub.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.Hub.name" title="tamos.Hub.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name of the instance</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.Hub.possibly_connected_networks" title="tamos.Hub.possibly_connected_networks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">possibly_connected_networks</span></code></a></p></td>
+<td><p>network components that include the hub with at least one edge with a connection status is different from <cite>network.no_connection</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.Hub.productions" title="tamos.Hub.productions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">productions</span></code></a></p></td>
+<td><p>production components in the hub.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.Hub.storages" title="tamos.Hub.storages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">storages</span></code></a></p></td>
+<td><p>storage components in the hub.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.Hub.change_components">
+<span class="sig-name descname"><span class="pre">change_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">components</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.Hub.change_components" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the components that can be installed in the hub.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>components</strong> (<em>instance</em><em> or </em><em>list</em><em> of </em><em>instances</em><em> of </em><em>production</em><em>, </em><em>storage and element_IO components.</em>) – </p></li>
+<li><p><strong>add</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, <cite>components</cite> are added to already defined components in hub.</p></li>
+<li><p><strong>remove</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, all instances from <cite>components</cite> that are components of the hub are removed from the hub.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If <cite>add</cite> and <cite>remove</cite> are False, hub components are replaced by <cite>components</cite>.
+<cite>add</cite> and <cite>remove</cite> cannot be both True.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.Hub.change_interface_masks">
+<span class="sig-name descname"><span class="pre">change_interface_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_masks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.Hub.change_interface_masks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the InterfaceMasks instances related to the hub.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface_masks</strong> (<em>instance</em><em> or </em><em>list</em><em> of </em><em>instances</em><em> of </em><em>InterfaceMask.</em>) – Instances in <cite>interface_masks</cite> that do not refer to a component of the hub will be ignored during constraints declaration.</p></li>
+<li><p><strong>add</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, <cite>components</cite> are added to already defined components in hub.</p></li>
+<li><p><strong>remove</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, all instances from <cite>components</cite> that are components of the hub are removed from the hub.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If <cite>add</cite> and <cite>remove</cite> are False, hub components are replaced by <cite>components</cite>.
+<cite>add</cite> and <cite>remove</cite> cannot be both True.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.Hub.components">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">components</span></span><a class="headerlink" href="#tamos.Hub.components" title="Permalink to this definition">¶</a></dt>
+<dd><p>production, storage and element_IO components in the hub.</p>
+<p>These can be modified using the <cite>hub.change_components</cite> method.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.Hub.components_assemblies">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">components_assemblies</span></span><a class="headerlink" href="#tamos.Hub.components_assemblies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Components assemblies of the hub.</p>
+<p>Must be provided as a list of 3-tuple objects (n_min, n_max, components) where:</p>
+<ul class="simple">
+<li><p><cite>n_min</cite> (<cite>n_max</cite>) is the minimum (maximum) number of components from <cite>components</cite> that must be installed in the hub.</p></li>
+<li><p><cite>components</cite> is a component or list of production, storage or element_IO components. If one component of <cite>components</cite> is not one of hub components,
+the 3-tuple (n_min, n_max, components) is ignored during constraints declaration.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hub</span><span class="o">.</span><span class="n">components_assemblies</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">heat_load_1</span><span class="p">,</span> <span class="n">heat_load_2</span><span class="p">]),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heat_load_3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">electric_heater_1</span><span class="p">,</span> <span class="n">electric_heater_2</span><span class="p">])])</span>
+</pre></div>
+</div>
+<p>At least one of the first and second loads must be used.
+The third load must be used. At most one of the two heaters must be used.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hub</span><span class="o">.</span><span class="n">components_assemblies</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">electric_heater</span><span class="p">,</span> <span class="n">heat_grid</span><span class="p">]),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heat_load</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>The load must be used. Either electric_heater or heat_grid can be used.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.Hub.describe">
+<span class="sig-name descname"><span class="pre">describe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.Hub.describe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show an exhaustive description of the hub.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.Hub.element_IOs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element_IOs</span></span><a class="headerlink" href="#tamos.Hub.element_IOs" title="Permalink to this definition">¶</a></dt>
+<dd><p>element_IO components in the hub.
+These can be modified using the <cite>hub.change_components</cite> method.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.Hub.interface_masks">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">interface_masks</span></span><a class="headerlink" href="#tamos.Hub.interface_masks" title="Permalink to this definition">¶</a></dt>
+<dd><p>InterfaceMask instances of the hub.</p>
+<p>These can be modified using the <cite>hub.change_interface_masks</cite> method.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.Hub.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#tamos.Hub.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the instance</p>
+<p>This name is used in MILP model description.</p>
+<p>str
+names must not exceed 255 characters,
+all of which must be alphanumeric (a-z, A-Z, 0-9) or one of these symbols:
+! ” # $ % &amp; , . ; ? &#64; _ ‘ ’ { } ~.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.Hub.possibly_connected_networks">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">possibly_connected_networks</span></span><a class="headerlink" href="#tamos.Hub.possibly_connected_networks" title="Permalink to this definition">¶</a></dt>
+<dd><p>network components that include the hub with at least one edge with a connection status is different from <cite>network.no_connection</cite>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.Hub.productions">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">productions</span></span><a class="headerlink" href="#tamos.Hub.productions" title="Permalink to this definition">¶</a></dt>
+<dd><p>production components in the hub.</p>
+<p>These can be modified using the <cite>hub.change_components</cite> method.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.Hub.storages">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">storages</span></span><a class="headerlink" href="#tamos.Hub.storages" title="Permalink to this definition">¶</a></dt>
+<dd><p>storage components in the hub.</p>
+<p>These can be modified using the <cite>hub.change_components</cite> method.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.Hub</a><ul>
+<li><a class="reference internal" href="#tamos.Hub"><code class="docutils literal notranslate"><span class="pre">Hub</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.Hub.__init__"><code class="docutils literal notranslate"><span class="pre">Hub.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.change_components"><code class="docutils literal notranslate"><span class="pre">Hub.change_components()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.change_interface_masks"><code class="docutils literal notranslate"><span class="pre">Hub.change_interface_masks()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.components"><code class="docutils literal notranslate"><span class="pre">Hub.components</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.components_assemblies"><code class="docutils literal notranslate"><span class="pre">Hub.components_assemblies</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.describe"><code class="docutils literal notranslate"><span class="pre">Hub.describe()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.element_IOs"><code class="docutils literal notranslate"><span class="pre">Hub.element_IOs</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.interface_masks"><code class="docutils literal notranslate"><span class="pre">Hub.interface_masks</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.name"><code class="docutils literal notranslate"><span class="pre">Hub.name</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.possibly_connected_networks"><code class="docutils literal notranslate"><span class="pre">Hub.possibly_connected_networks</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.productions"><code class="docutils literal notranslate"><span class="pre">Hub.productions</span></code></a></li>
+<li><a class="reference internal" href="#tamos.Hub.storages"><code class="docutils literal notranslate"><span class="pre">Hub.storages</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../gathering_components.html"
+                          title="previous chapter">Gathering components</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tamos.TimeSettings.html"
+                          title="next chapter">tamos.TimeSettings</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.Hub.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.TimeSettings.html" title="tamos.TimeSettings"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../gathering_components.html" title="Gathering components"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../gathering_components.html" >Gathering components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.Hub</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.solve_tools.AdvSolve &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="General settings" href="../general_settings.html" />
+    <link rel="prev" title="Solving tools" href="../solve_tools.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../general_settings.html" title="General settings"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../solve_tools.html" title="Solving tools"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../solve_tools.html" accesskey="U">Solving tools</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.solve_tools.AdvSolve</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-solve-tools-advsolve">
+<h1>tamos.solve_tools.AdvSolve<a class="headerlink" href="#tamos-solve-tools-advsolve" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.solve_tools.AdvSolve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.solve_tools.</span></span><span class="sig-name descname"><span class="pre">AdvSolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MILPModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.solve_tools.AdvSolve" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.solve_tools.AdvSolve.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MILPModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.solve_tools.AdvSolve.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>AdvSolve is a wrapper that ease the advanced solving of MILP models.</p>
+<p>Attribute <cite>last_binaries</cite> contains the ResultsExport instances of of the latest solved models.
+These all are results of <cite>MILPModel</cite> yet following different solving configurations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MILPModel</strong> (<a class="reference internal" href="tamos.MILPModel.html#tamos.MILPModel" title="tamos.MILPModel"><em>MILPModel</em></a>) – A <cite>MILPModel</cite> instance whose <cite>declare_variables</cite> and <cite>declare_constraints_and_KPIs</cite>
+methods have already been called.
+<cite>MILPModel</cite> is used in every call to this instance methods.</p></li>
+<li><p><strong>working_dir</strong> (<em>str</em><em> or </em><em>path-like</em>) – Directory the results are read from (see <cite>skip_existing</cite>) and written to.</p></li>
+<li><p><strong>skip_existing</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>True</em>) – <ul>
+<li><p>If True and if there exists a ResultsExport on disk having the same name than <cite>MILPModel</cite>,
+existing results are loaded instead of solving again <cite>MILPModel</cite>.</p></li>
+<li><p>If False, <cite>MILPModel</cite> is solved in all cases.</p></li>
+</ul>
+</p></li>
+<li><p><strong>kwargs</strong> (<em>optional</em>) – <p>Keywords arguments.
+Some are passed to the <cite>solve</cite> method of <cite>MILPModel</cite> instance. These are:</p>
+<blockquote>
+<div><ul>
+<li><p>MIP_gap: float, default 1e-4</p></li>
+<li><p>threads: int, default 0</p></li>
+<li><p>timelimit: int, default 43200</p></li>
+</ul>
+</div></blockquote>
+<p>Others are passed to <cite>ResultsExport</cite>. These are:</p>
+<blockquote>
+<div><ul>
+<li><p>get_LP: bool, default False</p></li>
+<li><p>get_MPS: bool, default False</p></li>
+<li><p>csv_precision: int, default 3</p></li>
+<li><p>replace_inverted_TVP: bool, default False</p></li>
+</ul>
+</div></blockquote>
+<p><cite>parent_working_dir</cite> of ResultsExport will be ignored since <cite>working_dir</cite> has the same use.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ol class="arabic simple">
+<li><p>Each MILP solving is performed using the Cplex optimizer.</p></li>
+<li><p>AdvSolve does not perform model declaration.</p></li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.solve_tools.AdvSolve.__init__" title="tamos.solve_tools.AdvSolve.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(MILPModel, working_dir[, skip_existing])</p></td>
+<td><p>AdvSolve is a wrapper that ease the advanced solving of MILP models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.solve_tools.AdvSolve.solve" title="tamos.solve_tools.AdvSolve.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve</span></code></a>(kind[, exact_cost])</p></td>
+<td><p>Solves <cite>MILPModel</cite> with added features regarding &quot;Exergy&quot; and &quot;CO2&quot; objective functions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.solve_tools.AdvSolve.solve_front" title="tamos.solve_tools.AdvSolve.solve_front"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve_front</span></code></a>(main_kind, aux_kind, ...)</p></td>
+<td><p>Performs several <cite>MILPModel</cite> solvings given epsilon constraints to obtain a Pareto front of solutions.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.solve_tools.AdvSolve.MILPModel" title="tamos.solve_tools.AdvSolve.MILPModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MILPModel</span></code></a></p></td>
+<td><p>Used in every call to this instance methods.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.solve_tools.AdvSolve.kwargs" title="tamos.solve_tools.AdvSolve.kwargs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kwargs</span></code></a></p></td>
+<td><p>Keywords arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.solve_tools.AdvSolve.last_binaries" title="tamos.solve_tools.AdvSolve.last_binaries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">last_binaries</span></code></a></p></td>
+<td><p>The ResultsExport instances of the latest solved models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.solve_tools.AdvSolve.skip_existing" title="tamos.solve_tools.AdvSolve.skip_existing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skip_existing</span></code></a></p></td>
+<td><p><ul class="simple">
+<li><p>If True and if there exists a ResultsExport on disk having the same name than <cite>MILPModel</cite>,</p></li>
+</ul>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.solve_tools.AdvSolve.working_dir" title="tamos.solve_tools.AdvSolve.working_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">working_dir</span></code></a></p></td>
+<td><p>Directory the results are read from (see <cite>skip_existing</cite>) and written to.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.solve_tools.AdvSolve.MILPModel">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MILPModel</span></span><a class="headerlink" href="#tamos.solve_tools.AdvSolve.MILPModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used in every call to this instance methods.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.solve_tools.AdvSolve.kwargs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kwargs</span></span><a class="headerlink" href="#tamos.solve_tools.AdvSolve.kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keywords arguments.
+Some are passed to the <cite>solve</cite> method of <cite>MILPModel</cite> instance. These are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>MIP_gap: float, default 1e-4</p></li>
+<li><p>threads: int, default 0</p></li>
+<li><p>timelimit: int, default 43200</p></li>
+</ul>
+</div></blockquote>
+<p>Others are passed to <cite>ResultsExport</cite>. These are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>get_LP: bool, default False</p></li>
+<li><p>get_MPS: bool, default False</p></li>
+<li><p>csv_precision: int, default 3</p></li>
+<li><p>replace_inverted_TVP: bool, default False</p></li>
+</ul>
+</div></blockquote>
+<p><cite>parent_working_dir</cite> of ResultsExport will be ignored since <cite>working_dir</cite> has the same use.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.solve_tools.AdvSolve.last_binaries">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">last_binaries</span></span><a class="headerlink" href="#tamos.solve_tools.AdvSolve.last_binaries" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ResultsExport instances of the latest solved models.
+dict {str: ResultsExport}</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.solve_tools.AdvSolve.skip_existing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">skip_existing</span></span><a class="headerlink" href="#tamos.solve_tools.AdvSolve.skip_existing" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>If True and if there exists a ResultsExport on disk having the same name than <cite>MILPModel</cite>,
+existing results are loaded instead of solving again <cite>MILPModel</cite>.</p></li>
+<li><p>If False, <cite>MILPModel</cite> is solved in all cases.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.solve_tools.AdvSolve.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exact_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.solve_tools.AdvSolve.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solves <cite>MILPModel</cite> with added features regarding “Exergy” and “CO2” objective functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> (<em>{'Eco'</em><em>, </em><em>'CO2'</em><em>, </em><em>'Exergy'}</em>) – The kind of objective function to minimize.
+If ‘Eco’, this method does nothing much than calling <cite>MILPModel.solve</cite> method.</p></li>
+<li><p><strong>exact_cost</strong> (<em>bool optional</em><em>, </em><em>default False</em>) – <p>Only for <a href="#id1"><span class="problematic" id="id2">`</span></a>kind`=’CO2’ or <a href="#id3"><span class="problematic" id="id4">`</span></a>kind`=’Exergy’.</p>
+<ul>
+<li><p>If True, a second optimization is performed following an ‘Eco’ objective function but with an
+epsilon constraint so that the minimum amount of KPI <cite>kind</cite> is allowed.</p></li>
+<li><p>If False, no second optimization is performed.</p></li>
+</ul>
+<p>The main consequence of setting <cite>exact_cost</cite> = True is to get the real system cost with yet a minimization of
+non-economic KPI ‘Exergy’ or ‘CO2’.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Setting <a href="#id5"><span class="problematic" id="id6">`</span></a>exact_cost`=True may result in:</p>
+<ul class="simple">
+<li><p>an infeasible problem due to a lack of numerical tolerance</p></li>
+<li><p>a problem having a different solution from the first optimization, though they are theoretically supposed
+to be identical.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.solve_tools.AdvSolve.solve_front">
+<span class="sig-name descname"><span class="pre">solve_front</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">main_kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aux_kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_weighted_average</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.solve_tools.AdvSolve.solve_front" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs several <cite>MILPModel</cite> solvings given epsilon constraints to obtain a Pareto front of solutions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>main_kind</strong> (<em>{'Eco'</em><em>, </em><em>'CO2'</em><em>, </em><em>'Exergy'}</em>) – The kind of objective function to minimize.</p></li>
+<li><p><strong>aux_kind</strong> (<em>{'Eco'</em><em>, </em><em>'CO2'</em><em>, </em><em>'Exergy'}</em>) – The kind of objective function that is constrained by epsilon constraints.</p></li>
+<li><p><strong>mask_weighted_average</strong> (list of int, each int <cite>x</cite> verifies 0 &lt; x &lt; 10 000) – <p>In per 1e4.
+Values defining the epsilon constraints.
+Describes the upper bound of <cite>aux_kind</cite> as a fraction of the difference ‘A - B’, where:</p>
+<ul>
+<li><p>’A’ is the value of <cite>aux_kind</cite> KPI in <cite>main_kind</cite> optimization</p></li>
+<li><p>’B’ is the value of <cite>aux_kind</cite> KPI in <cite>aux_kind</cite> optimization</p></li>
+</ul>
+<p>See the examples section.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>df</strong> – A table summing-up the values of KPIs <cite>main_kind</cite> and <cite>aux_kind</cite> (columns)
+for the optimization according to <cite>main_kind</cite> and <cite>aux_kind</cite> objective functions (rows).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method proceeds according to these steps:</p>
+<ol class="arabic simple">
+<li><p>Optimize the problem according to <cite>main_kind</cite> objective function.
+Save the values of <cite>aux_kind</cite> KPI, say ‘A’.</p></li>
+<li><p>Optimize the problem according to <cite>aux_kind</cite> objective function.
+Save the values of <cite>aux_kind</cite> KPI, say ‘B’.</p></li>
+<li><p>For each value <cite>x</cite> of <cite>mask_weighted_average</cite>, do:</p>
+<ul class="simple">
+<li><p>Define an epsilon constraint on KPI <cite>aux_kind</cite> (using the <cite>declare_max_KPI_constraint</cite> method of <cite>MILPModel</cite>).
+The value of the constraint is: B + x * (A - B)</p></li>
+<li><p>Optimize the problem according to <cite>main_kind</cite> objective function, given the previously defined epsilon constraint.</p></li>
+</ul>
+</li>
+</ol>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">adv_solve</span><span class="o">.</span><span class="n">solve_front</span><span class="p">(</span><span class="n">main_kind</span><span class="o">=</span><span class="s2">&quot;Eco&quot;</span><span class="p">,</span> <span class="n">aux_kind</span><span class="o">=</span><span class="s2">&quot;CO2&quot;</span><span class="p">,</span> <span class="n">mask_weighted_average</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">9000</span><span class="p">])</span>
+<span class="go">    The problem is solved according to &quot;Eco&quot; and &quot;CO2&quot; objective functions.</span>
+<span class="go">    Then it is solved according to &quot;Eco&quot; objective function allowing successively:</span>
+</pre></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>10% of CO2 (1000)</p></li>
+<li><p>20% of CO2 (2000)</p></li>
+<li><p>50% of CO2 (5000)</p></li>
+<li><p>90% of CO2 (9000)</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.solve_tools.AdvSolve.working_dir">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">working_dir</span></span><a class="headerlink" href="#tamos.solve_tools.AdvSolve.working_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory the results are read from (see <cite>skip_existing</cite>) and written to.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.solve_tools.AdvSolve</a><ul>
+<li><a class="reference internal" href="#tamos.solve_tools.AdvSolve"><code class="docutils literal notranslate"><span class="pre">AdvSolve</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.solve_tools.AdvSolve.__init__"><code class="docutils literal notranslate"><span class="pre">AdvSolve.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.solve_tools.AdvSolve.MILPModel"><code class="docutils literal notranslate"><span class="pre">AdvSolve.MILPModel</span></code></a></li>
+<li><a class="reference internal" href="#tamos.solve_tools.AdvSolve.kwargs"><code class="docutils literal notranslate"><span class="pre">AdvSolve.kwargs</span></code></a></li>
+<li><a class="reference internal" href="#tamos.solve_tools.AdvSolve.last_binaries"><code class="docutils literal notranslate"><span class="pre">AdvSolve.last_binaries</span></code></a></li>
+<li><a class="reference internal" href="#tamos.solve_tools.AdvSolve.skip_existing"><code class="docutils literal notranslate"><span class="pre">AdvSolve.skip_existing</span></code></a></li>
+<li><a class="reference internal" href="#tamos.solve_tools.AdvSolve.solve"><code class="docutils literal notranslate"><span class="pre">AdvSolve.solve()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.solve_tools.AdvSolve.solve_front"><code class="docutils literal notranslate"><span class="pre">AdvSolve.solve_front()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.solve_tools.AdvSolve.working_dir"><code class="docutils literal notranslate"><span class="pre">AdvSolve.working_dir</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../solve_tools.html"
+                          title="previous chapter">Solving tools</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../general_settings.html"
+                          title="next chapter">General settings</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.solve_tools.AdvSolve.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../general_settings.html" title="General settings"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../solve_tools.html" title="Solving tools"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../solve_tools.html" >Solving tools</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.solve_tools.AdvSolve</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

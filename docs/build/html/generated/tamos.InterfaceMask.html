@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.InterfaceMask &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tamos.Hub.components_assemblies" href="tamos.Hub.components_assemblies.html" />
+    <link rel="prev" title="Constraining components and the use of components" href="../components_constrained_use.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.Hub.components_assemblies.html" title="tamos.Hub.components_assemblies"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../components_constrained_use.html" title="Constraining components and the use of components"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../components_constrained_use.html" accesskey="U">Constraining components and the use of components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.InterfaceMask</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-interfacemask">
+<h1>tamos.InterfaceMask<a class="headerlink" href="#tamos-interfacemask" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.InterfaceMask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.</span></span><span class="sig-name descname"><span class="pre">InterfaceMask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power_ub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_ub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.InterfaceMask" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.InterfaceMask.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power_ub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_ub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.InterfaceMask.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines power and energy constraints regarding exchanges between a component and the hub it is affected to.</p>
+<p>Must be passed to a hub to be effective.
+An InterfaceMask instance can be affected to different hubs. Constraints are applied in an independent manner
+no matter the hubs it is affected to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>component</strong> (<em>production</em><em>, </em><em>storage</em><em>, </em><em>element_IO</em><em> or </em><em>network instance</em>) – </p></li>
+<li><p><strong>element</strong> (<em>element instance</em><em>, </em><em>optional</em>) – Must be provided only if <cite>component</cite> is a production or storage instance.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>power_lb</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em><em>, </em><em>optional</em>) – The lower bound (upper bound) of the power related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.</p></li>
+<li><p><strong>power_ub</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em><em>, </em><em>optional</em>) – The lower bound (upper bound) of the power related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.</p></li>
+<li><p><strong>energy_lb</strong> (<em>float</em><em>, </em><em>optional</em>) – The lower bound (upper bound) of the energy related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.
+Energy is calculated as sum(power(t) * dt(t)) on the entire operation period.</p></li>
+<li><p><strong>energy_ub</strong> (<em>float</em><em>, </em><em>optional</em>) – The lower bound (upper bound) of the energy related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.
+Energy is calculated as sum(power(t) * dt(t)) on the entire operation period.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tms</span><span class="o">.</span><span class="n">InterfaceMask</span><span class="p">(</span><span class="n">component</span><span class="o">=</span><span class="n">electric_heater</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="n">electricity</span><span class="p">,</span> <span class="n">energy_ub</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The amount of energy related to element <cite>electricity</cite> during the entire operation period must not exceed 1000 kWh.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tms</span><span class="o">.</span><span class="n">InterfaceMask</span><span class="p">(</span><span class="n">component</span><span class="o">=</span><span class="n">electric_heater</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="n">heat</span><span class="p">,</span> <span class="n">power_lb</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The amount of energy related to element <cite>heat</cite> must be always greater than 5 kW.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tms</span><span class="o">.</span><span class="n">InterfaceMask</span><span class="p">(</span><span class="n">component</span><span class="o">=</span><span class="n">electric_heater</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="n">heat</span><span class="p">,</span> <span class="n">power_lb</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8760</span><span class="p">),</span>
+<span class="gp">... </span>                                                           <span class="n">power_ub</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8760</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The amount of energy related to element <cite>heat</cite> must increase linearly with time, from 1 to 10 kW.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.InterfaceMask.__init__" title="tamos.InterfaceMask.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(component[, element, name, ...])</p></td>
+<td><p>Defines power and energy constraints regarding exchanges between a component and the hub it is affected to.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.InterfaceMask.component" title="tamos.InterfaceMask.component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">component</span></code></a></p></td>
+<td><p>The component whose element exchanges with the hub interface are constrained.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.InterfaceMask.element" title="tamos.InterfaceMask.element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element</span></code></a></p></td>
+<td><p>If <cite>component</cite> is a storage or production instance, the element whose power flows and energy balances are constrained.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.InterfaceMask.energy_lb" title="tamos.InterfaceMask.energy_lb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_lb</span></code></a></p></td>
+<td><p>The lower bound of the energy related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.InterfaceMask.energy_ub" title="tamos.InterfaceMask.energy_ub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_ub</span></code></a></p></td>
+<td><p>The upper bound of the energy related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.InterfaceMask.name" title="tamos.InterfaceMask.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name of the instance</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.InterfaceMask.power_lb" title="tamos.InterfaceMask.power_lb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">power_lb</span></code></a></p></td>
+<td><p>The lower bound of the power related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.InterfaceMask.power_ub" title="tamos.InterfaceMask.power_ub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">power_ub</span></code></a></p></td>
+<td><p>The upper bound of the power related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.InterfaceMask.component">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">component</span></span><a class="headerlink" href="#tamos.InterfaceMask.component" title="Permalink to this definition">¶</a></dt>
+<dd><p>The component whose element exchanges with the hub interface are constrained.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.InterfaceMask.element">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element</span></span><a class="headerlink" href="#tamos.InterfaceMask.element" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <cite>component</cite> is a storage or production instance, the element whose power flows and energy balances are constrained.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.InterfaceMask.energy_lb">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">energy_lb</span></span><a class="headerlink" href="#tamos.InterfaceMask.energy_lb" title="Permalink to this definition">¶</a></dt>
+<dd><p>The lower bound of the energy related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.
+Energy is calculated as sum(power(t) * dt(t)) on the entire optimization period.
+None or float.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.InterfaceMask.energy_ub">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">energy_ub</span></span><a class="headerlink" href="#tamos.InterfaceMask.energy_ub" title="Permalink to this definition">¶</a></dt>
+<dd><p>The upper bound of the energy related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.
+Energy is calculated as sum(power(t) * dt(t)) on the entire optimization period.
+None or float.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.InterfaceMask.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#tamos.InterfaceMask.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the instance</p>
+<p>This name is used in MILP model description.</p>
+<p>str
+names must not exceed 255 characters,
+all of which must be alphanumeric (a-z, A-Z, 0-9) or one of these symbols:
+! ” # $ % &amp; , . ; ? &#64; _ ‘ ’ { } ~.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.InterfaceMask.power_lb">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">power_lb</span></span><a class="headerlink" href="#tamos.InterfaceMask.power_lb" title="Permalink to this definition">¶</a></dt>
+<dd><p>The lower bound of the power related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.
+None, numpy.ndarray or float.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.InterfaceMask.power_ub">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">power_ub</span></span><a class="headerlink" href="#tamos.InterfaceMask.power_ub" title="Permalink to this definition">¶</a></dt>
+<dd><p>The upper bound of the power related to the element <cite>element</cite> (if relevant) of component <cite>component</cite>.
+None, numpy.ndarray or float.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.InterfaceMask</a><ul>
+<li><a class="reference internal" href="#tamos.InterfaceMask"><code class="docutils literal notranslate"><span class="pre">InterfaceMask</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.InterfaceMask.__init__"><code class="docutils literal notranslate"><span class="pre">InterfaceMask.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.InterfaceMask.component"><code class="docutils literal notranslate"><span class="pre">InterfaceMask.component</span></code></a></li>
+<li><a class="reference internal" href="#tamos.InterfaceMask.element"><code class="docutils literal notranslate"><span class="pre">InterfaceMask.element</span></code></a></li>
+<li><a class="reference internal" href="#tamos.InterfaceMask.energy_lb"><code class="docutils literal notranslate"><span class="pre">InterfaceMask.energy_lb</span></code></a></li>
+<li><a class="reference internal" href="#tamos.InterfaceMask.energy_ub"><code class="docutils literal notranslate"><span class="pre">InterfaceMask.energy_ub</span></code></a></li>
+<li><a class="reference internal" href="#tamos.InterfaceMask.name"><code class="docutils literal notranslate"><span class="pre">InterfaceMask.name</span></code></a></li>
+<li><a class="reference internal" href="#tamos.InterfaceMask.power_lb"><code class="docutils literal notranslate"><span class="pre">InterfaceMask.power_lb</span></code></a></li>
+<li><a class="reference internal" href="#tamos.InterfaceMask.power_ub"><code class="docutils literal notranslate"><span class="pre">InterfaceMask.power_ub</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../components_constrained_use.html"
+                          title="previous chapter">Constraining components and the use of components</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tamos.Hub.components_assemblies.html"
+                          title="next chapter">tamos.Hub.components_assemblies</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.InterfaceMask.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.Hub.components_assemblies.html" title="tamos.Hub.components_assemblies"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../components_constrained_use.html" title="Constraining components and the use of components"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../components_constrained_use.html" >Constraining components and the use of components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.InterfaceMask</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.MILPModel &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Energy vectors" href="../element.html" />
+    <link rel="prev" title="tamos.TimeSettings" href="tamos.TimeSettings.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../element.html" title="Energy vectors"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tamos.TimeSettings.html" title="tamos.TimeSettings"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../gathering_components.html" accesskey="U">Gathering components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.MILPModel</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-milpmodel">
+<h1>tamos.MILPModel<a class="headerlink" href="#tamos-milpmodel" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.MILPModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.</span></span><span class="sig-name descname"><span class="pre">MILPModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hubs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.hub.Hub"><span class="pre">Hub</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.MILPModel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.MILPModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hubs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.hub.Hub"><span class="pre">Hub</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.MILPModel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages the declaration and solving processes of the MILP problem associated to the components of hubs <cite>hubs</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hubs</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a><em> or </em><em>list</em><em> of </em><a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – production, storage, element_IO and network components related to <cite>hubs</cite>
+are sized and operated using <cite>time_settings</cite> parameters.</p></li>
+<li><p><strong>time_settings</strong> (<em>TimeSettings instance</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.MILPModel.__init__" title="tamos.MILPModel.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(hubs, time_settings[, name])</p></td>
+<td><p>Manages the declaration and solving processes of the MILP problem associated to the components of hubs <cite>hubs</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.MILPModel.declare_constraints_and_KPIs" title="tamos.MILPModel.declare_constraints_and_KPIs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">declare_constraints_and_KPIs</span></code></a>()</p></td>
+<td><p>Declare constraints and KPIs associated with components related to <cite>hubs</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.MILPModel.declare_max_KPI_constraint" title="tamos.MILPModel.declare_max_KPI_constraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">declare_max_KPI_constraint</span></code></a>(kind, max_value)</p></td>
+<td><p>Constrains one of the objective KPI.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.MILPModel.declare_variables" title="tamos.MILPModel.declare_variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">declare_variables</span></code></a>()</p></td>
+<td><p>Declare all the decision variables associated with components related to <cite>hubs</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.MILPModel.remove_constraints_and_KPIs" title="tamos.MILPModel.remove_constraints_and_KPIs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_constraints_and_KPIs</span></code></a>([component])</p></td>
+<td><p>[experimental, unstable] Removes from the MILP model some constraints and KPIs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.MILPModel.remove_max_KPI_constraint" title="tamos.MILPModel.remove_max_KPI_constraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_max_KPI_constraint</span></code></a>(kind)</p></td>
+<td><p>Removes the limit on the objective KPI of kind <cite>kind</cite>, if it exists.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.MILPModel.solve" title="tamos.MILPModel.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve</span></code></a>(kind[, MIP_gap, threads, timelimit])</p></td>
+<td><p>Solves the MILP model minimizing the objective function of kind <cite>kind</cite>.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="tamos.MILPModel.components_assemblies.html#tamos.MILPModel.components_assemblies" title="tamos.MILPModel.components_assemblies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">components_assemblies</span></code></a></p></td>
+<td><p>Components assemblies of the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.MILPModel.description" title="tamos.MILPModel.description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code></a></p></td>
+<td><p>Stores a description of the model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.MILPModel.hubs" title="tamos.MILPModel.hubs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hubs</span></code></a></p></td>
+<td><p>production, storage, element_IO and network components related to <cite>hubs</cite> are sized and operated using <cite>time_settings</cite> parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.MILPModel.name" title="tamos.MILPModel.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name of this MILPModel instance.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.MILPModel.components_assemblies">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">components_assemblies</span></span><a class="headerlink" href="#tamos.MILPModel.components_assemblies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Components assemblies of the model.</p>
+<p>Must be provided as a list of 3-tuple objects (n_min, n_max, components) where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>n_min</cite> (<cite>n_max</cite>) is the minimum (maximum) number of components from <cite>components</cite> that must be installed, all hubs of <cite>hubs</cite> included.</p></li>
+<li><p><cite>components</cite> is a component or list of production, storage or element_IO components.
+For any component of <cite>components</cite>, if this component is not in at least one hub of this MILPModel instance,
+the 3-tuple (n_min, n_max, components) is ignored during constraints declaration.</p></li>
+</ul>
+</div></blockquote>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hub_1</span> <span class="o">=</span> <span class="n">Hub</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="n">heat_load_1</span><span class="p">,</span> <span class="n">heat_load_2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hub_2</span> <span class="o">=</span> <span class="n">Hub</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="n">heat_load_1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hub_3</span> <span class="o">=</span> <span class="n">Hub</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="n">heat_load_2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MILPModel</span> <span class="o">=</span> <span class="n">MILPModel</span><span class="p">(</span><span class="n">hubs</span><span class="o">=</span><span class="p">[</span><span class="n">hub_1</span><span class="p">,</span> <span class="n">hub_2</span><span class="p">,</span> <span class="n">hub_3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MILPModel</span><span class="o">.</span><span class="n">components_assemblies</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heat_load_1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="n">heat_load_1</span><span class="p">,</span> <span class="n">heat_load_2</span><span class="p">])]</span>
+</pre></div>
+</div>
+<p>heat_load_1 might be used at most one time, all hubs [hub_1, hub_2, hub_3] included.
+the number of times heat_load_1 or heat_load_2 are used in all hubs [hub_1, hub_2, hub_3]
+is greater than 2 but smaller than 3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.MILPModel.declare_constraints_and_KPIs">
+<span class="sig-name descname"><span class="pre">declare_constraints_and_KPIs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.MILPModel.declare_constraints_and_KPIs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Declare constraints and KPIs associated with components related to <cite>hubs</cite>.
+All KPIs are defined, i.e. covering each kind of objective function (Eco, Exergy, CO2).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.MILPModel.declare_max_KPI_constraint">
+<span class="sig-name descname"><span class="pre">declare_max_KPI_constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.MILPModel.declare_max_KPI_constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constrains one of the objective KPI.
+The values of these objective KPI are described in the <cite>solution_summary</cite> attribute of ResultsExport instances.
+This constraint can be removed by a call to <cite>remove_max_KPI_constraint(kind)</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> (<em>{'Eco'</em><em>, </em><em>'CO2'</em><em>, </em><em>'Exergy'}</em>) – </p></li>
+<li><p><strong>max_value</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ol class="arabic simple">
+<li><p>This method calls <cite>remove_max_KPI_constraint(kind)</cite> if necessary to remove any already defined constraint
+regarding kind <cite>kind</cite>.</p></li>
+<li><p>A constraint on kind <cite>kind</cite> can be defined no matter the kind of objective function.</p></li>
+<li><p>More than one kind can be constrained at a time.</p></li>
+</ol>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MILPModel</span><span class="o">.</span><span class="n">declare_max_KPI_constraint</span><span class="p">(</span><span class="s2">&quot;Eco&quot;</span><span class="p">,</span> <span class="mf">1e6</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The total cost of the system over its lifetime cannot exceed 1 million euros.
+&gt;&gt;&gt; MILPModel.declare_max_KPI_constraint(“CO2”, 2e5)</p>
+<p>The net CO2 emissions of the system over the operation period (net = entering - exiting) cannot exceed 200 tEqCO2
+&gt;&gt;&gt; MILPModel.declare_max_KPI_constraint(“Exergy”, 1e5)</p>
+<p>The net exergetical potential consumed by the system over the operation period (net = entering - exiting) cannot exceed 1e5 kWh.
+&gt;&gt;&gt; MILPModel.declare_max_KPI_constraint(“Eco”, -1e5)</p>
+<p>The system must be economically profitable and generate at least 100 000 euros over its lifetime.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.MILPModel.declare_variables">
+<span class="sig-name descname"><span class="pre">declare_variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.MILPModel.declare_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Declare all the decision variables associated with components related to <cite>hubs</cite>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.MILPModel.description">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#tamos.MILPModel.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores a description of the model.
+These properties are used to gather ResultsExport objects written on disk and create ResultsBatch objects.
+They define the <cite>relevant_descriptors</cite> attribute of ResultsBatch objects.</p>
+<p>Some of these properties are automatically declared by tamos. The other are user-defined.
+description: dict</p>
+<ul class="simple">
+<li><p>keys are str</p></li>
+<li><p>values are int, float or str</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.MILPModel.hubs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hubs</span></span><a class="headerlink" href="#tamos.MILPModel.hubs" title="Permalink to this definition">¶</a></dt>
+<dd><p>production, storage, element_IO and network components related to <cite>hubs</cite>
+are sized and operated using <cite>time_settings</cite> parameters.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.MILPModel.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#tamos.MILPModel.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of this MILPModel instance. If None, name is the current time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.MILPModel.remove_constraints_and_KPIs">
+<span class="sig-name descname"><span class="pre">remove_constraints_and_KPIs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.MILPModel.remove_constraints_and_KPIs" title="Permalink to this definition">¶</a></dt>
+<dd><p>[experimental, unstable]
+Removes from the MILP model some constraints and KPIs. The next call to <cite>declare_constraints_and_KPIs</cite>
+will only redefine the missing constraints and KPIs, saving model declaration time.
+Relevant after a component modification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>component</strong> (<em>Four possible kinds</em><em> of </em><em>arg are accepted:</em>) – <ul class="simple">
+<li><p>‘all’: all constraints and KPIs of the MILP model are removed (default)</p></li>
+<li><p>None: assembly_constraints of this MILPModel instance are removed.
+To remove and define constraints on Eco, Exergy and CO2 KPIs, please use the dedicated methods.</p></li>
+<li><p>production, storage, element_IO, or network component: constraints and KPIs of the corresponding component
+are removed, no matter the hub(s) they belong or are related to.</p></li>
+<li><p>hub: constraints and KPIs related to the hub are removed. This includes:</p>
+<ul>
+<li><p>hub assemblies constraints</p></li>
+<li><p>constraints and KPIs of all production, storage and element_IO components of hub</p></li>
+<li><p>hub interface constraints (the ones that bind every element exchanges between components)</p></li>
+</ul>
+</li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ol class="arabic">
+<li><p>In case component is a production, storage, element_IO, or network component.
+Constraints and KPIs removal of component does not affect the contribution of the component to the hub interface.
+Unconstrained energy flows will occur if constraints and KPIs are not declared again after call to this method.</p></li>
+<li><p>Some model modifications require a complete model redeclaration (variables, constraints, KPIs). These cases are:</p>
+<ul class="simple">
+<li><p>Some components were added or removed from hubs (production, storage, element_IO)</p></li>
+<li><p>New networks are used</p></li>
+<li><p><cite>time_steps</cite> attribute of <cite>time_settings</cite> was modified</p></li>
+</ul>
+<p>In these cases, variable redeclaration is automatically performed.</p>
+</li>
+<li><p>Regarding constraints and KPIs, <cite>Cost</cite> instances are bound to the element_IO component they describe.</p></li>
+<li><p>Regarding constraints and KPIs, <cite>InterfaceMask</cite> instances are bound to the component they describe.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.MILPModel.remove_max_KPI_constraint">
+<span class="sig-name descname"><span class="pre">remove_max_KPI_constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.MILPModel.remove_max_KPI_constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the limit on the objective KPI of kind <cite>kind</cite>, if it exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kind</strong> (<em>{'Eco'</em><em>, </em><em>'CO2'</em><em>, </em><em>'Exergy'}</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.MILPModel.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MIP_gap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timelimit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">43200</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.MILPModel.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solves the MILP model minimizing the objective function of kind <cite>kind</cite>.
+Model is solved using the Cplex solver. To use another MILP solver, please export the model in LP or MPS format
+using a ResultsExport instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> (<em>{'Eco'</em><em>, </em><em>'CO2'</em><em>, </em><em>'Exergy'}</em>) – </p></li>
+<li><p><strong>MIP_gap</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default 1e-4</em>) – 0 &lt;= MIG_gap &lt;= 1
+According to Cplex documentation, gap between the best integer objective and the objective of the best node remaining.</p></li>
+<li><p><strong>threads</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default 0</em>) – <p>0 &lt;= threads
+According to Cplex documentation, maximal number of parallel threads that will be invoked by any CPLEX parallel optimizer.</p>
+<ul>
+<li><p>If 0, let Cplex decide</p></li>
+<li><p>Else, uses up to <cite>threads</cite> threads</p></li>
+</ul>
+</p></li>
+<li><p><strong>timelimit</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default 43200</em>) – 0 &lt; timelimit
+According to Cplex documentation, maximum time, in seconds, for a call to an optimizer.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Other Cplex parameters can be set by accessing the attribute <cite>_model_data.mdl.parameters</cite> of this <cite>MILPModel</cite> instance.
+For instance:
+&gt;&gt;&gt; MILPModel._model_data.mdl.parameters.mip.cuts.flowcovers.set(2)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.MILPModel</a><ul>
+<li><a class="reference internal" href="#tamos.MILPModel"><code class="docutils literal notranslate"><span class="pre">MILPModel</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.MILPModel.__init__"><code class="docutils literal notranslate"><span class="pre">MILPModel.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.MILPModel.components_assemblies"><code class="docutils literal notranslate"><span class="pre">MILPModel.components_assemblies</span></code></a></li>
+<li><a class="reference internal" href="#tamos.MILPModel.declare_constraints_and_KPIs"><code class="docutils literal notranslate"><span class="pre">MILPModel.declare_constraints_and_KPIs()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.MILPModel.declare_max_KPI_constraint"><code class="docutils literal notranslate"><span class="pre">MILPModel.declare_max_KPI_constraint()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.MILPModel.declare_variables"><code class="docutils literal notranslate"><span class="pre">MILPModel.declare_variables()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.MILPModel.description"><code class="docutils literal notranslate"><span class="pre">MILPModel.description</span></code></a></li>
+<li><a class="reference internal" href="#tamos.MILPModel.hubs"><code class="docutils literal notranslate"><span class="pre">MILPModel.hubs</span></code></a></li>
+<li><a class="reference internal" href="#tamos.MILPModel.name"><code class="docutils literal notranslate"><span class="pre">MILPModel.name</span></code></a></li>
+<li><a class="reference internal" href="#tamos.MILPModel.remove_constraints_and_KPIs"><code class="docutils literal notranslate"><span class="pre">MILPModel.remove_constraints_and_KPIs()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.MILPModel.remove_max_KPI_constraint"><code class="docutils literal notranslate"><span class="pre">MILPModel.remove_max_KPI_constraint()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.MILPModel.solve"><code class="docutils literal notranslate"><span class="pre">MILPModel.solve()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tamos.TimeSettings.html"
+                          title="previous chapter">tamos.TimeSettings</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../element.html"
+                          title="next chapter">Energy vectors</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.MILPModel.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../element.html" title="Energy vectors"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tamos.TimeSettings.html" title="tamos.TimeSettings"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../gathering_components.html" >Gathering components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.MILPModel</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

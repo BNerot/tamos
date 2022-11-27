@@ -1,0 +1,61 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Gathering components}{1}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}tamos.Hub}{1}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}tamos.TimeSettings}{4}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}tamos.MILPModel}{8}{section.1.3}% 
+\contentsline {chapter}{\numberline {2}Energy vectors}{13}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Elements}{13}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}tamos.element.ElectricityVector}{13}{subsection.2.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}tamos.element.FuelVector}{14}{subsection.2.1.2}% 
+\contentsline {subsection}{\numberline {2.1.3}tamos.element.ThermalVector}{15}{subsection.2.1.3}% 
+\contentsline {section}{\numberline {2.2}Utilities}{17}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}tamos.element.fetch\_TVP}{17}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}tamos.element.get\_existing\_TVPs}{18}{subsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.2.3}tamos.element.get\_dead\_state\_temperature}{18}{subsection.2.2.3}% 
+\contentsline {subsection}{\numberline {2.2.4}tamos.element.set\_dead\_state\_temperature}{19}{subsection.2.2.4}% 
+\contentsline {chapter}{\numberline {3}Production components}{21}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}tamos.production.AbsHP}{21}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}tamos.production.BiomassBoiler}{26}{section.3.2}% 
+\contentsline {section}{\numberline {3.3}tamos.production.CHP}{29}{section.3.3}% 
+\contentsline {section}{\numberline {3.4}tamos.production.COPModels}{33}{section.3.4}% 
+\contentsline {section}{\numberline {3.5}tamos.production.CompHP}{35}{section.3.5}% 
+\contentsline {section}{\numberline {3.6}tamos.production.DryCooler}{40}{section.3.6}% 
+\contentsline {section}{\numberline {3.7}tamos.production.ElectricHeater}{43}{section.3.7}% 
+\contentsline {section}{\numberline {3.8}tamos.production.ElementConverter}{47}{section.3.8}% 
+\contentsline {section}{\numberline {3.9}tamos.production.FPSolar}{50}{section.3.9}% 
+\contentsline {section}{\numberline {3.10}tamos.production.GasBoiler}{53}{section.3.10}% 
+\contentsline {section}{\numberline {3.11}tamos.production.HeatExchanger}{56}{section.3.11}% 
+\contentsline {section}{\numberline {3.12}tamos.production.Pump}{59}{section.3.12}% 
+\contentsline {chapter}{\numberline {4}Storage components}{63}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}tamos.storage.OneVector}{63}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}tamos.storage.Thermocline}{66}{section.4.2}% 
+\contentsline {chapter}{\numberline {5}ElementIO components}{69}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}tamos.elementIO.Cost}{69}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}tamos.elementIO.Grid}{70}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}tamos.elementIO.Load}{73}{section.5.3}% 
+\contentsline {chapter}{\numberline {6}Network components}{77}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Components}{77}{section.6.1}% 
+\contentsline {subsection}{\numberline {6.1.1}tamos.network.NonThermalNetwork}{77}{subsection.6.1.1}% 
+\contentsline {subsection}{\numberline {6.1.2}tamos.network.ThermalNetwork}{84}{subsection.6.1.2}% 
+\contentsline {subsection}{\numberline {6.1.3}tamos.network.HREThermalNetwork}{93}{subsection.6.1.3}% 
+\contentsline {section}{\numberline {6.2}Utilities}{102}{section.6.2}% 
+\contentsline {subsection}{\numberline {6.2.1}tamos.network.get\_distance\_function}{102}{subsection.6.2.1}% 
+\contentsline {subsection}{\numberline {6.2.2}tamos.network.set\_distance\_function}{102}{subsection.6.2.2}% 
+\contentsline {chapter}{\numberline {7}Constraining components and the use of components}{103}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}tamos.InterfaceMask}{103}{section.7.1}% 
+\contentsline {section}{\numberline {7.2}tamos.Hub.components\_assemblies}{105}{section.7.2}% 
+\contentsline {section}{\numberline {7.3}tamos.MILPModel.components\_assemblies}{106}{section.7.3}% 
+\contentsline {chapter}{\numberline {8}Data input and output}{107}{chapter.8}% 
+\contentsline {section}{\numberline {8.1}Export and aggregate results}{107}{section.8.1}% 
+\contentsline {subsection}{\numberline {8.1.1}tamos.data\_IO.ResultsExport}{107}{subsection.8.1.1}% 
+\contentsline {subsection}{\numberline {8.1.2}tamos.data\_IO.ResultsBatch}{111}{subsection.8.1.2}% 
+\contentsline {section}{\numberline {8.2}Load data from disk}{115}{section.8.2}% 
+\contentsline {subsection}{\numberline {8.2.1}tamos.data\_IO.read\_properties}{115}{subsection.8.2.1}% 
+\contentsline {subsection}{\numberline {8.2.2}tamos.data\_IO.read\_data}{116}{subsection.8.2.2}% 
+\contentsline {chapter}{\numberline {9}Solving tools}{117}{chapter.9}% 
+\contentsline {section}{\numberline {9.1}tamos.solve\_tools.AdvSolve}{117}{section.9.1}% 
+\contentsline {chapter}{\numberline {10}General settings}{121}{chapter.10}% 
+\contentsline {section}{\numberline {10.1}tamos.allow\_duplicated\_names}{121}{section.10.1}% 
+\contentsline {section}{\numberline {10.2}tamos.use\_name\_in\_MILP}{121}{section.10.2}% 
+\contentsline {section}{\numberline {10.3}tamos.reset\_names\_list}{122}{section.10.3}% 
+\contentsline {chapter}{\numberline {11}Indices and tables}{123}{chapter.11}% 

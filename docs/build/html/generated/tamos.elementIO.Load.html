@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.elementIO.Load &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Network components" href="../network_components.html" />
+    <link rel="prev" title="tamos.elementIO.Grid" href="tamos.elementIO.Grid.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../network_components.html" title="Network components"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tamos.elementIO.Grid.html" title="tamos.elementIO.Grid"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../element_IO_components.html" accesskey="U">ElementIO components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.elementIO.Load</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-elementio-load">
+<h1>tamos.elementIO.Load<a class="headerlink" href="#tamos-elementio-load" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.elementIO.Load">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.elementIO.</span></span><span class="sig-name descname"><span class="pre">Load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">load</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emissions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exergy_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.elementIO.Load" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.elementIO.Load.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">load</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emissions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exergy_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.elementIO.Load.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows constrained element exchanges between the energy system and its environment.</p>
+<p>Load components are associated with the following exported decision variables:</p>
+<ul>
+<li><p>X_EXT, binary.
+Whether the Load instance is used by the hub.
+To force the use of this instance by a hub, set components_assemblies at Hub or MILPModel level.
+For instance:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hub</span><span class="o">.</span><span class="n">components_assemblies</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heating_load</span><span class="p">)]</span>
+</pre></div>
+</div>
+</li>
+<li><p>For all t, F_EXT(t), continuous, in kW.
+The power related to <cite>element</cite> entering the load (i.e. leaving the hub).</p></li>
+</ul>
+<p>Load components declare the following KPIs:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>ElementIO CO2</cite></dt><dd><p>In kgEqCO2.
+Defines the “CO2” objective function. Related to the <cite>emissions</cite> attribute.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>ElementIO Exergy</cite></dt><dd><p>In kWh.
+Defines the “Exergy” objective function. Related to the <cite>exergy_factor</cite> attribute of <cite>element</cite>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>load</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>numpy.ndarray</em>) – The power pattern that constrains element exchanges.
+In kW.
+Same sign than the flow of ‘element’.</p></li>
+<li><p><strong>element</strong> (<a class="reference internal" href="tamos.element.ElectricityVector.html#tamos.element.ElectricityVector" title="tamos.element.ElectricityVector"><em>ElectricityVector</em></a><em>, </em><a class="reference internal" href="tamos.element.FuelVector.html#tamos.element.FuelVector" title="tamos.element.FuelVector"><em>FuelVector</em></a><em>, </em><a class="reference internal" href="tamos.element.ThermalVector.html#tamos.element.ThermalVector" title="tamos.element.ThermalVector"><em>ThermalVector</em></a><em> or </em><em>ThermalVectorPair</em>) – </p></li>
+<li><p><strong>emissions</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Quantity of CO2 associated with a positive flow of <cite>element</cite>.
+In kgEqCO2/kWh.
+Usually negative.
+If None, emissions are not accounted for.</p></li>
+<li><p><strong>element_cost</strong> (<a class="reference internal" href="tamos.elementIO.Cost.html#tamos.elementIO.Cost" title="tamos.elementIO.Cost"><em>Cost</em></a><em>, </em><em>optional</em>) – Cost associated with a positive flow of ‘element’.
+If None, no costs are taken into account.</p></li>
+<li><p><strong>exergy_count</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default True</em>) – Whether this instance contributes to the system “Exergy” KPI.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The Load class defines a multiplication operation to speed up the definition of several Load instances.
+Multiplication makes a copy of <cite>load</cite> attribute, so that mutable numpy.ndarray are made independent.
+For instance:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">load_1</span> <span class="o">=</span> <span class="n">Load</span><span class="p">(</span><span class="n">load</span><span class="o">=-</span><span class="mi">4</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="n">element1</span><span class="p">,</span> <span class="n">emissions</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">exergy_count</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">load_2</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">load_1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">load_2</span><span class="o">.</span><span class="n">load</span>
+<span class="go"> -12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">load_2</span><span class="o">.</span><span class="n">element</span> <span class="ow">is</span> <span class="n">element1</span>
+<span class="go"> True</span>
+</pre></div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Load</span><span class="p">(</span><span class="n">load</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="n">electricity</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A constant electrical power of 10 kW will leave the hub interface.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">thermal_source</span> <span class="o">=</span> <span class="n">fetch_TVP</span><span class="p">(</span><span class="n">in_TV</span><span class="o">=</span><span class="n">in_TV</span><span class="p">,</span> <span class="n">out_TV</span><span class="o">=</span><span class="n">out_TV</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">load_1</span> <span class="o">=</span> <span class="n">Load</span><span class="p">(</span><span class="n">load</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="n">thermal_source</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">load_2</span> <span class="o">=</span> <span class="n">Load</span><span class="p">(</span><span class="n">load</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">element</span><span class="o">=~</span><span class="n">thermal_source</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In both cases of load_1 and load_2, a constant power of 5 kW is exchanged between the hub interface and the Load component,
+with <cite>out_TV</cite> entering the hub interface (i.e. leaving the Load component).</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.elementIO.Load.__init__" title="tamos.elementIO.Load.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(load, element[, emissions, ...])</p></td>
+<td><p>Allows constrained element exchanges between the energy system and its environment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.elementIO.Load.compute_actualized_cost" title="tamos.elementIO.Load.compute_actualized_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_actualized_cost</span></code></a>(CAPEX, OPEX, ...[, ...])</p></td>
+<td><p>Compute the cost of a component using its 'Lifetime' and 'Discount rate (%)' properties.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.elementIO.Load.element" title="tamos.elementIO.Load.element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element</span></code></a></p></td>
+<td><p>Element exchanged between the hub interface and this instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.elementIO.Load.element_cost" title="tamos.elementIO.Load.element_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_cost</span></code></a></p></td>
+<td><p>Cost instance associated with a positive flow of 'element'.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.elementIO.Load.emissions" title="tamos.elementIO.Load.emissions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">emissions</span></code></a></p></td>
+<td><p>Quantity of CO2 associated with a positive power flow of <cite>element</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.elementIO.Load.exergy_count" title="tamos.elementIO.Load.exergy_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exergy_count</span></code></a></p></td>
+<td><p>Whether this instance contributes to the system &quot;Exergy&quot; KPI.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.elementIO.Load.load" title="tamos.elementIO.Load.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a></p></td>
+<td><p>The power pattern that constrains element exchanges.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.elementIO.Load.name" title="tamos.elementIO.Load.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name of the instance</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.elementIO.Load.used_elements" title="tamos.elementIO.Load.used_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">used_elements</span></code></a></p></td>
+<td><p>Elements used by the component.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.elementIO.Load.compute_actualized_cost">
+<span class="sig-name descname"><span class="pre">compute_actualized_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CAPEX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OPEX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_lifetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.elementIO.Load.compute_actualized_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the cost of a component using its ‘Lifetime’ and ‘Discount rate (%)’ properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CAPEX</strong> (<em>float</em>) – Capital Expenditure. Cost in euros paid every <cite>technical_lifetime</cite> periods.</p></li>
+<li><p><strong>OPEX</strong> (<em>float</em>) – Operational Expenditure. Cost in euros paid each period.</p></li>
+<li><p><strong>system_lifetime</strong> (<em>int</em>) – Number of periods defining the existence of the energy system.</p></li>
+<li><p><strong>lifetime</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of periods defining the existence of the component.
+If specified, overwrite the “Lifetime” property.</p></li>
+<li><p><strong>discount_rate</strong> (<em>float</em>) – In percent (%). Describes the importance of the economic amortization process, per period.
+If specified, overwrite the “Discount rate (%)” property.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>A 3-tuple (total_cost, CAPEX_share, OPEX_share) where</em></p></li>
+<li><p>* CAPEX_share is the share of total cost related to <cite>CAPEX</cite></p></li>
+<li><p>* OPEX_share is the share of total cost related to <cite>OPEX</cite></p></li>
+<li><p><em>* total_cost = CAPEX_share + OPEX_share</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Takes into account residual value of component in the case <cite>system_lifetime</cite> is not a multiple of <cite>lifetime</cite>.
+In this case, the last replacement occuring at period replacement_period is paid in proportion of ‘CAPEX’
+depending linearly on the number of periods left:
+CAPEX * (system_lifetime - replacement_period) / lifetime</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.elementIO.Load.element">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element</span></span><a class="headerlink" href="#tamos.elementIO.Load.element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Element exchanged between the hub interface and this instance.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.elementIO.Load.element_cost">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element_cost</span></span><a class="headerlink" href="#tamos.elementIO.Load.element_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cost instance associated with a positive flow of ‘element’.
+Cost instance</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.elementIO.Load.emissions">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">emissions</span></span><a class="headerlink" href="#tamos.elementIO.Load.emissions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quantity of CO2 associated with a positive power flow of <cite>element</cite>.
+In kgEqCO2/kWh.
+Usually negative.
+int, float or numpy.ndarray</p>
+<p class="rubric">Examples</p>
+<p>Examples below are for a Grid component, but Load components behaves similarly.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">natural_gas_grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">natural_gas</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">natural_gas_grid</span><span class="o">.</span><span class="n">emissions</span> <span class="o">=</span> <span class="o">-</span> <span class="mf">0.25</span>
+</pre></div>
+</div>
+<p>When the Grid component <cite>natural_gas_grid</cite> receives 1 kWh of natural gas from the hub interface
+the net CO2 emissions of the energy system decrease of 0.250 kgEqCO2.
+Conversely, if the energy_system receives 1 kWh of natural gas from <cite>natural_gas_grid</cite>,
+its CO2 emissions increase of 0.250 kgEqCO2.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">thermal_grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">thermal_source</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">thermal_grid</span><span class="o">.</span><span class="n">emissions</span> <span class="o">=</span> <span class="o">-</span> <span class="mf">0.05</span>
+</pre></div>
+</div>
+<p><cite>thermal_grid</cite> is such that when the power flow of <cite>thermal_source</cite> is 1 kWh (positive):</p>
+<ul class="simple">
+<li><p>thermal_source.in_TV enters the grid (i.e leaves the energy system)
+and thermal_source.out_TV leaves the grid (i.e enters the energy_system)</p></li>
+<li><p>the net CO2 emissions of the energy system decrease of 50 gEqCO2.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.elementIO.Load.exergy_count">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exergy_count</span></span><a class="headerlink" href="#tamos.elementIO.Load.exergy_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this instance contributes to the system “Exergy” KPI.
+bool</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.elementIO.Load.load">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><a class="headerlink" href="#tamos.elementIO.Load.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>The power pattern that constrains element exchanges.
+In kW.
+Same sign than the flow of ‘element’.
+int, float or numpy.ndarray</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.elementIO.Load.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#tamos.elementIO.Load.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the instance</p>
+<p>This name is used in MILP model description.</p>
+<p>str
+names must not exceed 255 characters,
+all of which must be alphanumeric (a-z, A-Z, 0-9) or one of these symbols:
+! ” # $ % &amp; , . ; ? &#64; _ ‘ ’ { } ~.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.elementIO.Load.used_elements">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">used_elements</span></span><a class="headerlink" href="#tamos.elementIO.Load.used_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elements used by the component.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.elementIO.Load</a><ul>
+<li><a class="reference internal" href="#tamos.elementIO.Load"><code class="docutils literal notranslate"><span class="pre">Load</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.elementIO.Load.__init__"><code class="docutils literal notranslate"><span class="pre">Load.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Load.compute_actualized_cost"><code class="docutils literal notranslate"><span class="pre">Load.compute_actualized_cost()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Load.element"><code class="docutils literal notranslate"><span class="pre">Load.element</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Load.element_cost"><code class="docutils literal notranslate"><span class="pre">Load.element_cost</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Load.emissions"><code class="docutils literal notranslate"><span class="pre">Load.emissions</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Load.exergy_count"><code class="docutils literal notranslate"><span class="pre">Load.exergy_count</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Load.load"><code class="docutils literal notranslate"><span class="pre">Load.load</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Load.name"><code class="docutils literal notranslate"><span class="pre">Load.name</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Load.used_elements"><code class="docutils literal notranslate"><span class="pre">Load.used_elements</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tamos.elementIO.Grid.html"
+                          title="previous chapter">tamos.elementIO.Grid</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../network_components.html"
+                          title="next chapter">Network components</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.elementIO.Load.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../network_components.html" title="Network components"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tamos.elementIO.Grid.html" title="tamos.elementIO.Grid"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../element_IO_components.html" >ElementIO components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.elementIO.Load</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

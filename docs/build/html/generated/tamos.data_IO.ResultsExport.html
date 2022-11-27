@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.data_IO.ResultsExport &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tamos.data_IO.ResultsBatch" href="tamos.data_IO.ResultsBatch.html" />
+    <link rel="prev" title="Data input and output" href="../data_IO.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.data_IO.ResultsBatch.html" title="tamos.data_IO.ResultsBatch"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../data_IO.html" title="Data input and output"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../data_IO.html" accesskey="U">Data input and output</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.data_IO.ResultsExport</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-data-io-resultsexport">
+<h1>tamos.data_IO.ResultsExport<a class="headerlink" href="#tamos-data-io-resultsexport" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.data_IO.</span></span><span class="sig-name descname"><span class="pre">ResultsExport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MILPModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_LP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_MPS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_working_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_inverted_TVP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MILPModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_LP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_MPS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_working_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_inverted_TVP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>ResultsExport instances extract and write to disk the decision variables and KPIs of a solved MILPModel instance.</p>
+<p>Variable and KPIs values are collected at the instance creation. These are stored as attributes.
+A call to a <cite>write_</cite> method copies this information on disk as CSV and text files.
+A call to <cite>dump_object</cite> method write a binary form of this instance on disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MILPModel</strong> (<a class="reference internal" href="tamos.MILPModel.html#tamos.MILPModel" title="tamos.MILPModel"><em>MILPModel</em></a>) – If the solving of the MILPModel instance did not succeed, only pre solve model information is collected by ResultsExport.
+If the solving succeeded, KPIs, decision variables and some non-essential model results are collected.</p></li>
+<li><p><strong>get_LP</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default</em><em>, </em><em>False</em>) – Whether to collect the model following the LP standard.</p></li>
+<li><p><strong>get_MPS</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default False</em>) – Whether to collect the model following the MPS standard.</p></li>
+<li><p><strong>parent_working_dir</strong> (<em>str</em><em> or </em><em>path-like</em><em>, </em><em>optional</em>) – This defines the <cite>working_dir</cite> attribute according to working_dir=parent_working_dir/name,
+where ‘name’ is the <cite>name</cite> attribute of MILPModel.
+The export of results is done in <cite>working_dir</cite>.
+If not provided, <cite>parent_working_dir</cite> is a new directory called ‘results’ in the parent working directory.</p></li>
+<li><p><strong>csv_precision</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default 3</em>) – Number of decimals regarding CSV export of decision variables and KPIs.</p></li>
+<li><p><strong>replace_inverted_TVP</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>False</em>) – <ul>
+<li><p>If True, ThermalVectorPair elements ‘~TVP’ are replaced by ‘TVP’ if both of them are used in the model.
+This does not change the values of decision variables and KPIs since
+a flow associated with ‘TVP’ is the opposite of the same flow associated with ‘~TVP’.
+Setting <a href="#id1"><span class="problematic" id="id2">`</span></a>replace_inverted_TVP`=True can make the results reading easier.</p></li>
+<li><p>If False, both ‘~TVP’ and ‘TVP’ are kept.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>A ResultsExport instance is a representation of a MILPModel instance at the time it is created.
+The further change in the MILPModel instance are not reflected in the already existing ResultsExport instance.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.__init__" title="tamos.data_IO.ResultsExport.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(MILPModel[, get_LP, get_MPS, ...])</p></td>
+<td><p>ResultsExport instances extract and write to disk the decision variables and KPIs of a solved MILPModel instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.dump_object" title="tamos.data_IO.ResultsExport.dump_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dump_object</span></code></a>()</p></td>
+<td><p>Writes the binary form of this instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.load_object" title="tamos.data_IO.ResultsExport.load_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_object</span></code></a>(path)</p></td>
+<td><p>Loads a binary ResultsExport or ResultsBatch object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.reduce_memory" title="tamos.data_IO.ResultsExport.reduce_memory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_memory</span></code></a>(df)</p></td>
+<td><p>Reduces the memory used by a DataFrame by changing the data type of numerical columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.remove_small_values" title="tamos.data_IO.ResultsExport.remove_small_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_small_values</span></code></a>(df, name[, threshold, ...])</p></td>
+<td><p>Removes small numerical values from a dataframe containing decision variable or KPI values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_KPIs" title="tamos.data_IO.ResultsExport.write_KPIs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_KPIs</span></code></a>()</p></td>
+<td><p>Writes all KPIs defined at component level in a directory named 'KPIs'.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_LP" title="tamos.data_IO.ResultsExport.write_LP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_LP</span></code></a>()</p></td>
+<td><p>Writes the model according to Cplex LP standard.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_MPS" title="tamos.data_IO.ResultsExport.write_MPS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_MPS</span></code></a>()</p></td>
+<td><p>Writes the model according to the MPS standard.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_all" title="tamos.data_IO.ResultsExport.write_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_all</span></code></a>()</p></td>
+<td><p>Writes all the content of <cite>MILPModel</cite> collected by this instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_description" title="tamos.data_IO.ResultsExport.write_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_description</span></code></a>()</p></td>
+<td><p>Writes the <cite>description</cite> attribute of <cite>MILPModel</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_exec_time" title="tamos.data_IO.ResultsExport.write_exec_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_exec_time</span></code></a>()</p></td>
+<td><p>Writes the time spent on:</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_model_complexity" title="tamos.data_IO.ResultsExport.write_model_complexity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_model_complexity</span></code></a>()</p></td>
+<td><p>Writes the number of decision variables and constraints per type (continuous, discrete, etc...).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_solution_summary" title="tamos.data_IO.ResultsExport.write_solution_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_solution_summary</span></code></a>()</p></td>
+<td><p>Writes important information about the solved model, including the values of the 3 main KPIs, &quot;Eco&quot;, &quot;CO2&quot; and &quot;Exergy&quot;.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_unsatisfied_constraints" title="tamos.data_IO.ResultsExport.write_unsatisfied_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_unsatisfied_constraints</span></code></a>()</p></td>
+<td><p>Writes every constraint of the model that is unsatisfied after model solve, given a tolerance of 1e-6.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_variables" title="tamos.data_IO.ResultsExport.write_variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_variables</span></code></a>()</p></td>
+<td><p>Writes all decision variables in a directory named 'Variables'.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsExport.working_dir" title="tamos.data_IO.ResultsExport.working_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">working_dir</span></code></a></p></td>
+<td><p>Directory the results are read from or exported to.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.dump_object">
+<span class="sig-name descname"><span class="pre">dump_object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.dump_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the binary form of this instance.</p>
+<p class="rubric">Notes</p>
+<ol class="arabic simple">
+<li><p>Model data (decision variables, constraints, KPIs, etc…) are lost during this operation.</p></li>
+<li><p>The binary form of this instance is called ‘results <cite>name</cite>’ with <cite>name</cite> the <cite>name</cite> attribute of <cite>MILPModel</cite>.</p></li>
+<li><p>The <cite>description</cite> attribute of <cite>MILPModel</cite> is also dumped to speed up the call of <cite>ResultsBatch.create_batch</cite> method.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.load_object">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.load_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a binary ResultsExport or ResultsBatch object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> or </em><em>path-like</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>The loaded object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.reduce_memory">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reduce_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.reduce_memory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduces the memory used by a DataFrame by changing the data type of numerical columns.</p>
+<p>Data type of float and integer columns is changed for the type with the smallest memory usage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – </p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method works inplace, i.e. <cite>df</cite> is modified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.remove_small_values">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_small_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_zeros</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.remove_small_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes small numerical values from a dataframe containing decision variable or KPI values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of the column of <cite>df</cite> that contains the numerical values.</p></li>
+<li><p><strong>threshold</strong> (<em>int</em><em> or </em><em>float</em><em>, </em><em>optional</em><em>, </em><em>default 0.1</em>) – All values ‘x’ for which abs(x) &lt; <cite>threshold</cite> are replaced by 0.</p></li>
+<li><p><strong>drop_zeros</strong> (<em>{'Series'</em><em>, </em><em>'All'}</em><em>, </em><em>optional</em>) – <ul>
+<li><p>If not provided, all rows where <cite>name</cite> value is zero are kept.</p></li>
+<li><p>’Series’: each temporal data series is kept if at least one value in this serie is not zero.
+<cite>df</cite> must include a ‘Date’ column for <cite>drop_zeros`=’Series’ to be effective.
+A temporal data serie of `df</cite> is a subset of df such that only the ‘Date’ and <cite>name</cite> columns
+have changing values in this subset.</p></li>
+<li><p>’All’ : remove all rows where <cite>name</cite> value is zero.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method works inplace, i.e. <cite>df</cite> is modified.
+Near-zero values in column <cite>name</cite> are removed according to <cite>threshold</cite> and <cite>drop_zeros</cite>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.working_dir">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">working_dir</span></span><a class="headerlink" href="#tamos.data_IO.ResultsExport.working_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory the results are read from or exported to.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.write_KPIs">
+<span class="sig-name descname"><span class="pre">write_KPIs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.write_KPIs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes all KPIs defined at component level in a directory named ‘KPIs’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.write_LP">
+<span class="sig-name descname"><span class="pre">write_LP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.write_LP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the model according to Cplex LP standard.</p>
+<p>The <cite>get_LP</cite> argument must have been set to ‘True’ at instance creation.</p>
+<p class="rubric">Notes</p>
+<p>Cplex LP standard slightly differs from the conventional LP standard.
+Prefer the use <cite>write_MPS</cite> in case a communication with another solver is needed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.write_MPS">
+<span class="sig-name descname"><span class="pre">write_MPS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.write_MPS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the model according to the MPS standard.</p>
+<p>The <cite>get_MPS</cite> argument must have been set to ‘True’ at instance creation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.write_all">
+<span class="sig-name descname"><span class="pre">write_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.write_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes all the content of <cite>MILPModel</cite> collected by this instance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.write_description">
+<span class="sig-name descname"><span class="pre">write_description</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.write_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the <cite>description</cite> attribute of <cite>MILPModel</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.write_exec_time">
+<span class="sig-name descname"><span class="pre">write_exec_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.write_exec_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the time spent on:</p>
+<ul class="simple">
+<li><p>decision variables declaration (‘MILPModel.declare_variables’)</p></li>
+<li><p>constraints and KPIs declaration (‘MILPModel.declare_constraints_and_KPIs’)</p></li>
+<li><p>solving process, in seconds (‘MILPModel.solve’)</p></li>
+<li><p>solving process, in deterministic Cplex ticks (‘Solving deterministic time’)</p></li>
+<li><p>total time (variables, constraints, KPIs, solving), in seconds (‘Total time’)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.write_model_complexity">
+<span class="sig-name descname"><span class="pre">write_model_complexity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.write_model_complexity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the number of decision variables and constraints per type (continuous, discrete, etc…).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.write_solution_summary">
+<span class="sig-name descname"><span class="pre">write_solution_summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.write_solution_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes important information about the solved model, including the values of the 3 main KPIs, “Eco”, “CO2” and “Exergy”.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.write_unsatisfied_constraints">
+<span class="sig-name descname"><span class="pre">write_unsatisfied_constraints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.write_unsatisfied_constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes every constraint of the model that is unsatisfied after model solve, given a tolerance of 1e-6.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsExport.write_variables">
+<span class="sig-name descname"><span class="pre">write_variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsExport.write_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes all decision variables in a directory named ‘Variables’.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.data_IO.ResultsExport</a><ul>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport"><code class="docutils literal notranslate"><span class="pre">ResultsExport</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.__init__"><code class="docutils literal notranslate"><span class="pre">ResultsExport.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.dump_object"><code class="docutils literal notranslate"><span class="pre">ResultsExport.dump_object()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.load_object"><code class="docutils literal notranslate"><span class="pre">ResultsExport.load_object()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.reduce_memory"><code class="docutils literal notranslate"><span class="pre">ResultsExport.reduce_memory()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.remove_small_values"><code class="docutils literal notranslate"><span class="pre">ResultsExport.remove_small_values()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.working_dir"><code class="docutils literal notranslate"><span class="pre">ResultsExport.working_dir</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_KPIs"><code class="docutils literal notranslate"><span class="pre">ResultsExport.write_KPIs()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_LP"><code class="docutils literal notranslate"><span class="pre">ResultsExport.write_LP()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_MPS"><code class="docutils literal notranslate"><span class="pre">ResultsExport.write_MPS()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_all"><code class="docutils literal notranslate"><span class="pre">ResultsExport.write_all()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_description"><code class="docutils literal notranslate"><span class="pre">ResultsExport.write_description()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_exec_time"><code class="docutils literal notranslate"><span class="pre">ResultsExport.write_exec_time()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_model_complexity"><code class="docutils literal notranslate"><span class="pre">ResultsExport.write_model_complexity()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_solution_summary"><code class="docutils literal notranslate"><span class="pre">ResultsExport.write_solution_summary()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_unsatisfied_constraints"><code class="docutils literal notranslate"><span class="pre">ResultsExport.write_unsatisfied_constraints()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsExport.write_variables"><code class="docutils literal notranslate"><span class="pre">ResultsExport.write_variables()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../data_IO.html"
+                          title="previous chapter">Data input and output</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tamos.data_IO.ResultsBatch.html"
+                          title="next chapter">tamos.data_IO.ResultsBatch</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.data_IO.ResultsExport.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.data_IO.ResultsBatch.html" title="tamos.data_IO.ResultsBatch"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../data_IO.html" title="Data input and output"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../data_IO.html" >Data input and output</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.data_IO.ResultsExport</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

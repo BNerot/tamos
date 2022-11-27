@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.MILPModel.components_assemblies &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data input and output" href="../data_IO.html" />
+    <link rel="prev" title="tamos.Hub.components_assemblies" href="tamos.Hub.components_assemblies.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../data_IO.html" title="Data input and output"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tamos.Hub.components_assemblies.html" title="tamos.Hub.components_assemblies"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../components_constrained_use.html" accesskey="U">Constraining components and the use of components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.MILPModel.components_assemblies</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-milpmodel-components-assemblies">
+<h1>tamos.MILPModel.components_assemblies<a class="headerlink" href="#tamos-milpmodel-components-assemblies" title="Permalink to this heading">¶</a></h1>
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.MILPModel.components_assemblies">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MILPModel.</span></span><span class="sig-name descname"><span class="pre">components_assemblies</span></span><a class="headerlink" href="#tamos.MILPModel.components_assemblies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Components assemblies of the model.</p>
+<p>Must be provided as a list of 3-tuple objects (n_min, n_max, components) where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>n_min</cite> (<cite>n_max</cite>) is the minimum (maximum) number of components from <cite>components</cite> that must be installed, all hubs of <cite>hubs</cite> included.</p></li>
+<li><p><cite>components</cite> is a component or list of production, storage or element_IO components.
+For any component of <cite>components</cite>, if this component is not in at least one hub of this MILPModel instance,
+the 3-tuple (n_min, n_max, components) is ignored during constraints declaration.</p></li>
+</ul>
+</div></blockquote>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hub_1</span> <span class="o">=</span> <span class="n">Hub</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="n">heat_load_1</span><span class="p">,</span> <span class="n">heat_load_2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hub_2</span> <span class="o">=</span> <span class="n">Hub</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="n">heat_load_1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hub_3</span> <span class="o">=</span> <span class="n">Hub</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="n">heat_load_2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MILPModel</span> <span class="o">=</span> <span class="n">MILPModel</span><span class="p">(</span><span class="n">hubs</span><span class="o">=</span><span class="p">[</span><span class="n">hub_1</span><span class="p">,</span> <span class="n">hub_2</span><span class="p">,</span> <span class="n">hub_3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MILPModel</span><span class="o">.</span><span class="n">components_assemblies</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heat_load_1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="n">heat_load_1</span><span class="p">,</span> <span class="n">heat_load_2</span><span class="p">])]</span>
+</pre></div>
+</div>
+<p>heat_load_1 might be used at most one time, all hubs [hub_1, hub_2, hub_3] included.
+the number of times heat_load_1 or heat_load_2 are used in all hubs [hub_1, hub_2, hub_3]
+is greater than 2 but smaller than 3.</p>
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.MILPModel.components_assemblies</a><ul>
+<li><a class="reference internal" href="#tamos.MILPModel.components_assemblies"><code class="docutils literal notranslate"><span class="pre">MILPModel.components_assemblies</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tamos.Hub.components_assemblies.html"
+                          title="previous chapter">tamos.Hub.components_assemblies</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../data_IO.html"
+                          title="next chapter">Data input and output</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.MILPModel.components_assemblies.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../data_IO.html" title="Data input and output"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tamos.Hub.components_assemblies.html" title="tamos.Hub.components_assemblies"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../components_constrained_use.html" >Constraining components and the use of components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.MILPModel.components_assemblies</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

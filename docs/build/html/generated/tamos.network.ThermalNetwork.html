@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.network.ThermalNetwork &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tamos.network.HREThermalNetwork" href="tamos.network.HREThermalNetwork.html" />
+    <link rel="prev" title="tamos.network.NonThermalNetwork" href="tamos.network.NonThermalNetwork.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.network.HREThermalNetwork.html" title="tamos.network.HREThermalNetwork"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tamos.network.NonThermalNetwork.html" title="tamos.network.NonThermalNetwork"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../network_components.html" accesskey="U">Network components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.network.ThermalNetwork</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-network-thermalnetwork">
+<h1>tamos.network.ThermalNetwork<a class="headerlink" href="#tamos-network-thermalnetwork" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.network.</span></span><span class="sig-name descname"><span class="pre">ThermalNetwork</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hubs_locations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">production_hub</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">production_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'heat&amp;cold'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eco_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hubs_locations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">production_hub</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">production_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'heat&amp;cold'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eco_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>ThermalNetwork instances makes possible to share ThermalVectorPair elements between hubs.</p>
+<p>Power is exchanged between two hubs, given a distribution losses proportional to the difference between
+network temperature and soil temperature.
+All distribution losses must be compensated for by an additional power in <cite>production_hub</cite>.
+The investment cost is proportional to the network length.</p>
+<p>NonThermalNetwork components are associated with the following exported decision variables:</p>
+<ul class="simple">
+<li><p>X_N(hub_1, hub_2), binary.
+Whether a connection from hub <cite>hub_1</cite> to hub <cite>hub_2</cite> exists and allows a flow of <cite>element</cite>.
+Note that X_N(hub_1, hub_2) is different from X_N(hub_2, hub_1).</p></li>
+<li><p>Y_N(hub_1, hub_2), binary.
+Whether a connection between hubs <cite>hub_1</cite> and <cite>hub_2</cite> exists and allows a flow of <cite>element</cite>.</p></li>
+<li><p>X_SYS(hub), binary.
+Whether the hub <cite>hub</cite> is connected to at least one other hub, no matter the direction of the connection.</p></li>
+<li><p>For all t, F_SYS(hub, t), continuous, in kW.
+The power related to <cite>element</cite> going from hub <cite>hub</cite> to the network.</p></li>
+<li><p>For all t, F_N(hub_1, hub_2, t), continuous, in kW.
+The power related to <cite>element</cite> going from hub <cite>hub_1</cite> to hub <cite>hub_2</cite> through the network.
+Note that F_N(hub_1, hub_2, t) is the opposite of F_N(hub_2, hub_1, t).</p></li>
+</ul>
+<p>NonThermalNetwork components declare the following KPIs:</p>
+<ul class="simple">
+<li><p><cite>COST_network</cite>
+In euros.
+Contributes to the “Eco” objective function.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hubs_locations</strong> (<em>dict {Hub:</em><em> (</em><em>float</em><em>, </em><em>float</em><em>)</em><em>}</em>) – <ul>
+<li><p>Keys of <cite>hubs_locations</cite> are the hubs possibly connected by the network.
+They define the <cite>hubs</cite> attribute.</p></li>
+<li><p>Values of <cite>hubs_locations</cite> define x and y coordinates in space.
+In km.
+They describe the position of the hub given the absolute reference (0, 0).
+Used to calculate distance between two hubs. The used distance function can be accessed by the
+<cite>get_distance_function</cite> function and set using <cite>set_distance_function</cite> from tamos.network.</p></li>
+</ul>
+</p></li>
+<li><p><strong>element</strong> (<em>ThermalVectorPair</em>) – Element exchanged between <cite>hubs</cite>.
+Whether <cite>element</cite> is cooled down or warmed up does not define if the network is a heating or cooling network.</p></li>
+<li><p><strong>properties</strong> (<em>dict {str: int</em><em> | </em><em>float}</em>) – <p>Techno-economic properties of the network.
+The <cite>properties</cite> attribute must include the following keys:</p>
+<ul>
+<li><p>”Losses (%/km)”</p></li>
+<li><p>”CAPEX (EUR/km)”</p></li>
+<li><p>”OPEX (%CAPEX)”</p></li>
+<li><p>”Variable OPEX (EUR/MWh)”</p></li>
+</ul>
+</p></li>
+<li><p><strong>production_hub</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – <p>The hub that bears:</p>
+<blockquote>
+<div><ul>
+<li><p>all the distribution losses of the network.</p></li>
+<li><p>the costs associated with the “Variable OPEX (EUR/MWh)” property.</p></li>
+</ul>
+</div></blockquote>
+<p>Must be one of <cite>hubs</cite> and must be able to exchange <cite>element</cite> with the network.</p>
+</p></li>
+<li><p><strong>production_mode</strong> (<em>{&quot;heat&amp;cold&quot;</em><em>, </em><em>&quot;heat&quot;</em><em>, </em><em>&quot;cold&quot;}</em><em>, </em><em>optional</em><em>, </em><em>default &quot;heat&amp;cold&quot;</em>) – <p>Related to <cite>production_hub</cite>.
+Used to speed up the KPI declaration regarding the <cite>Variable OPEX (EUR/MWh)</cite> property.
+Provides insight on the sign of the flow going from <cite>production_hub</cite> to the network.
+Whether <cite>element</cite> is cooled down or warmed up is independent from <cite>production_mode</cite>.</p>
+<ul>
+<li><p>”heat” (“cold”): only heat (cold) is send to the network by <cite>production_hub</cite>.
+The flow is always of the same sign, thus the KPI constraint is like:
+energy = sum(a_given_sign * power(t) * dt)</p></li>
+<li><p>”heat” (“cold”): only heat (cold) is send to the network by <cite>production_hub</cite>.
+The sign of the flow may change during the operation period, thus the KPI constraint is like:
+energy = sum(abs(power(t)) * dt)</p></li>
+</ul>
+<p>Specifying “heat” or “cold” will speed up the KPI declaration but describes a particular state of energy flows.
+Specifying “heat&amp;cold” makes the KPI declaration long (but has no impact on resolution) but works in all cases.</p>
+</p></li>
+<li><p><strong>scale_factor</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default 1</em>) – Multiplies the two coordinates of each hub in <cite>hubs_locations</cite>.
+A scale factor &gt;1 tends to increase the distance between two hubs.</p></li>
+<li><p><strong>eco_count</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default True</em>) – Whether this instance contributes to the system “Eco” KPI.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ol class="arabic simple">
+<li><p>A network component describe an oriented graph where each node is a hub and each edge is a connection between two hubs.</p></li>
+<li><p>Connection status between two hubs can be defined using the <cite>set_connection_status</cite> and <cite>set_node_status</cite> methods.
+Per default, all pairs of hubs are connected according to the status <cite>no_connection</cite>.</p></li>
+<li><p>The connection of <cite>production_hub</cite> to every other hub using the network is not mandatory,
+i.e. nothing constrains the network graph to be connected.</p></li>
+<li><p>The variable OPEX applies only on the thermal production of <cite>production_hub</cite>.
+Another MILP implementation could have taken into account all hubs sending power to the network, at the cost of
+additional continuous decision variables and constraints.</p></li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.__init__" title="tamos.network.ThermalNetwork.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(hubs_locations, element, ...[, ...])</p></td>
+<td><p>ThermalNetwork instances makes possible to share ThermalVectorPair elements between hubs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.compute_actualized_cost" title="tamos.network.ThermalNetwork.compute_actualized_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_actualized_cost</span></code></a>(CAPEX, OPEX, ...[, ...])</p></td>
+<td><p>Compute the cost of a component using its 'Lifetime' and 'Discount rate (%)' properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.generate_MSP" title="tamos.network.ThermalNetwork.generate_MSP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_MSP</span></code></a>([excluded_hubs])</p></td>
+<td><p>Defines a minimum spanning tree (MSP) linking all hubs of <cite>hubs</cite> that are not in <cite>excluded_hubs</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.get_connection_power_bounds" title="tamos.network.ThermalNetwork.get_connection_power_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_connection_power_bounds</span></code></a>(hub_1, hub_2)</p></td>
+<td><p>Returns the power limits of the flow of element from hub <cite>hub_1</cite> to hub <cite>hub_2</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.get_connection_status" title="tamos.network.ThermalNetwork.get_connection_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_connection_status</span></code></a>(hub_1, hub_2)</p></td>
+<td><p>Returns the status of the directional connection between two hubs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.get_distance" title="tamos.network.ThermalNetwork.get_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_distance</span></code></a>(hub_1, hub_2)</p></td>
+<td><p>Returns the distance between two hubs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.might_connect" title="tamos.network.ThermalNetwork.might_connect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">might_connect</span></code></a>(hub)</p></td>
+<td><p>Checks whether a hub is able to connect to the network.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.plot" title="tamos.network.ThermalNetwork.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>()</p></td>
+<td><p>Plots a representation of the network hubs and connections in the (x, y) space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.set_connection_power_bounds" title="tamos.network.ThermalNetwork.set_connection_power_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_connection_power_bounds</span></code></a>(hub_1, hub_2[, ...])</p></td>
+<td><p>Sets power limits on the flow of element from hub <cite>hub_1</cite> to hub <cite>hub_2</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.set_connection_status" title="tamos.network.ThermalNetwork.set_connection_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_connection_status</span></code></a>(hub_1, hub_2, status)</p></td>
+<td><p>Defines the connection status of the edge going from <cite>hub_1</cite> to <cite>hub_2</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.set_node_status" title="tamos.network.ThermalNetwork.set_node_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_node_status</span></code></a>(hub, status)</p></td>
+<td><p>Defines the connection status of every incoming and outcoming edge of a hub.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.set_soil_properties" title="tamos.network.ThermalNetwork.set_soil_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_soil_properties</span></code></a>(soil_temperature, U[, ...])</p></td>
+<td><p>Sets the physical properties that define thermal losses.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.set_status" title="tamos.network.ThermalNetwork.set_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_status</span></code></a>(status[, excluded_hubs])</p></td>
+<td><p>Define the connection status of all edges except the ones involving a hub from <cite>excluded_hubs</cite>.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">connection</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.eco_count" title="tamos.network.ThermalNetwork.eco_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eco_count</span></code></a></p></td>
+<td><p>Whether this instance contributes to the system &quot;Eco&quot; KPI bool</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.element" title="tamos.network.ThermalNetwork.element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element</span></code></a></p></td>
+<td><p>Element exchanged between <cite>hubs</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.hubs" title="tamos.network.ThermalNetwork.hubs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hubs</span></code></a></p></td>
+<td><p>The hubs involved in the network definition.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.name" title="tamos.network.ThermalNetwork.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name of the instance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">no_connection</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">optim_one_way_max</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">optim_one_way_min</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">optim_two_ways</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.production_hub" title="tamos.network.ThermalNetwork.production_hub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">production_hub</span></code></a></p></td>
+<td><p>The hub that bears:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.production_mode" title="tamos.network.ThermalNetwork.production_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">production_mode</span></code></a></p></td>
+<td><p>Related to <cite>production_hub</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.scale_factor" title="tamos.network.ThermalNetwork.scale_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_factor</span></code></a></p></td>
+<td><p>Multiplies the two coordinates of each hub in <cite>hubs_locations</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.network.ThermalNetwork.used_elements" title="tamos.network.ThermalNetwork.used_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">used_elements</span></code></a></p></td>
+<td><p>Elements used by the component.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.compute_actualized_cost">
+<span class="sig-name descname"><span class="pre">compute_actualized_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CAPEX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OPEX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_lifetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.compute_actualized_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the cost of a component using its ‘Lifetime’ and ‘Discount rate (%)’ properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CAPEX</strong> (<em>float</em>) – Capital Expenditure. Cost in euros paid every <cite>technical_lifetime</cite> periods.</p></li>
+<li><p><strong>OPEX</strong> (<em>float</em>) – Operational Expenditure. Cost in euros paid each period.</p></li>
+<li><p><strong>system_lifetime</strong> (<em>int</em>) – Number of periods defining the existence of the energy system.</p></li>
+<li><p><strong>lifetime</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of periods defining the existence of the component.
+If specified, overwrite the “Lifetime” property.</p></li>
+<li><p><strong>discount_rate</strong> (<em>float</em>) – In percent (%). Describes the importance of the economic amortization process, per period.
+If specified, overwrite the “Discount rate (%)” property.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>A 3-tuple (total_cost, CAPEX_share, OPEX_share) where</em></p></li>
+<li><p>* CAPEX_share is the share of total cost related to <cite>CAPEX</cite></p></li>
+<li><p>* OPEX_share is the share of total cost related to <cite>OPEX</cite></p></li>
+<li><p><em>* total_cost = CAPEX_share + OPEX_share</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Takes into account residual value of component in the case <cite>system_lifetime</cite> is not a multiple of <cite>lifetime</cite>.
+In this case, the last replacement occuring at period replacement_period is paid in proportion of ‘CAPEX’
+depending linearly on the number of periods left:
+CAPEX * (system_lifetime - replacement_period) / lifetime</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.eco_count">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">eco_count</span></span><a class="headerlink" href="#tamos.network.ThermalNetwork.eco_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this instance contributes to the system “Eco” KPI
+bool</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.element">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element</span></span><a class="headerlink" href="#tamos.network.ThermalNetwork.element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Element exchanged between <cite>hubs</cite>.</p>
+<p>Whether <cite>element</cite> is cooled down or warmed up does not define if the network is a heating or cooling network.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.generate_MSP">
+<span class="sig-name descname"><span class="pre">generate_MSP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">excluded_hubs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.generate_MSP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines a minimum spanning tree (MSP) linking all hubs of <cite>hubs</cite> that are not in <cite>excluded_hubs</cite>.</p>
+<p>The MSP calculation does not account for bidirectionality thus all edges of the MSP graph are given
+the status <cite>optim_two_ways</cite>.
+The status of the other edges (not part of the MSP) are not modified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>excluded_hubs</strong> (<em>list</em><em> of </em><a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a><em>, </em><em>optional</em>) – All hubs from <cite>excluded_hubs</cite> must be part of <cite>hubs</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.get_connection_power_bounds">
+<span class="sig-name descname"><span class="pre">get_connection_power_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hub_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hub_2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.get_connection_power_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the power limits of the flow of element from hub <cite>hub_1</cite> to hub <cite>hub_2</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hub_1</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be hubs from <cite>hubs</cite>.</p></li>
+<li><p><strong>hub_2</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be hubs from <cite>hubs</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>The lower bound and upper bound of the power flow from <cite>hub_1</cite> to <cite>hub_2</cite>, in kW.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.get_connection_status">
+<span class="sig-name descname"><span class="pre">get_connection_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hub_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hub_2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.get_connection_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the status of the directional connection between two hubs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hub_1</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be hubs from <cite>hubs</cite>.</p></li>
+<li><p><strong>hub_2</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be hubs from <cite>hubs</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The status of the edge from hub_1 to hub_2.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>network status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.get_distance">
+<span class="sig-name descname"><span class="pre">get_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hub_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hub_2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.get_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the distance between two hubs.
+The used distance function can be accessed by the <cite>get_distance_function</cite> function
+and set using <cite>set_distance_function</cite> from tamos.network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hub_1</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be from <cite>hubs</cite>.</p></li>
+<li><p><strong>hub_2</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be from <cite>hubs</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>The distance from <cite>hub_1</cite> to <cite>hub_2</cite> which is the same than from <cite>hub_2</cite> to <cite>hub_1</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.hubs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hubs</span></span><a class="headerlink" href="#tamos.network.ThermalNetwork.hubs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The hubs involved in the network definition.</p>
+<p>Some of these hubs might be completely disconnected from the network
+(i.e. network.might_connect(hub) is False) yet they are still considered and associated with MILP decision variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.might_connect">
+<span class="sig-name descname"><span class="pre">might_connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hub</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.might_connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether a hub is able to connect to the network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hub</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>True if the following two conditions are met</em></p></li>
+<li><p>* Hub <cite>hub</cite> is one of <cite>hubs</cite>.</p></li>
+<li><p>* There exists at least one hub <cite>hub_2</cite> in <cite>hubs</cite> such that connection status from <cite>hub</cite> to <cite>hub_2</cite> or <cite>hub_2</cite> to <cite>hub</cite> – is different from ‘No connection’.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#tamos.network.ThermalNetwork.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the instance</p>
+<p>This name is used in MILP model description.</p>
+<p>str
+names must not exceed 255 characters,
+all of which must be alphanumeric (a-z, A-Z, 0-9) or one of these symbols:
+! ” # $ % &amp; , . ; ? &#64; _ ‘ ’ { } ~.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a representation of the network hubs and connections in the (x, y) space.</p>
+<p>A call to this method gives a visual insight of how the network is parametrized, BEFORE optimization.
+The optimization implicitely tranforms every edge status to either ‘No connection’ or ‘Connection’.</p>
+<p class="rubric">Notes</p>
+<p>The line linking two hubs is straight for commodity and does not represent
+the real distance function used in the MILP model.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.production_hub">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">production_hub</span></span><a class="headerlink" href="#tamos.network.ThermalNetwork.production_hub" title="Permalink to this definition">¶</a></dt>
+<dd><p>The hub that bears:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>all the distribution losses of the network.</p></li>
+<li><p>the costs associated with the “Variable OPEX (EUR/MWh)” property.</p></li>
+</ul>
+</div></blockquote>
+<p>Must be one of <cite>hubs</cite> and must be able to exchange <cite>element</cite> with the network.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.production_mode">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">production_mode</span></span><a class="headerlink" href="#tamos.network.ThermalNetwork.production_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Related to <cite>production_hub</cite>.</p>
+<p>{“heat&amp;cold”, “heat”, “cold”}, optional, default “heat&amp;cold”
+Used to speed up the KPI declaration regarding the <cite>Variable OPEX (EUR/MWh)</cite> property.
+Provides insight on the sign of the flow going from <cite>production_hub</cite> to the network.
+Whether <cite>element</cite> is cooled down or warmed up is independent from <cite>production_mode</cite>.</p>
+<ul class="simple">
+<li><p>“heat” (“cold”): only heat (cold) is send to the network by <cite>production_hub</cite>.
+The flow is always of the same sign, thus the KPI constraint is like:
+energy = sum(a_given_sign * power(t) * dt)</p></li>
+<li><p>“heat” (“cold”): only heat (cold) is send to the network by <cite>production_hub</cite>.
+The sign of the flow may change during the operation period, thus the KPI constraint is like:
+energy = sum(abs(power(t)) * dt)</p></li>
+</ul>
+<p>Specifying “heat” or “cold” will speed up the KPI declaration but describes a particular state of energy flows.
+Specifying “heat&amp;cold” makes the KPI declaration long (but has no impact on resolution) but works in all cases.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.scale_factor">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale_factor</span></span><a class="headerlink" href="#tamos.network.ThermalNetwork.scale_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiplies the two coordinates of each hub in <cite>hubs_locations</cite>.</p>
+<p>A scale factor &gt;1 tends to increase the distance between two hubs.
+float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.set_connection_power_bounds">
+<span class="sig-name descname"><span class="pre">set_connection_power_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hub_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hub_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power_ub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.set_connection_power_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets power limits on the flow of element from hub <cite>hub_1</cite> to hub <cite>hub_2</cite>.
+These limits apply only if the connection from <cite>hub_1</cite> to <cite>hub_2</cite> is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hub_1</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be hubs from <cite>hubs</cite>.</p></li>
+<li><p><strong>hub_2</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be hubs from <cite>hubs</cite>.</p></li>
+<li><p><strong>power_lb</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>numpy.ndarray</em>) – power_lb &gt;= 0, power_ub &gt;= 0
+In kW.
+The lower bound (upper bound) of the flow of <cite>element</cite> from <cite>hub_1</cite> to <cite>hub_2</cite>.</p></li>
+<li><p><strong>power_ub</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>numpy.ndarray</em>) – power_lb &gt;= 0, power_ub &gt;= 0
+In kW.
+The lower bound (upper bound) of the flow of <cite>element</cite> from <cite>hub_1</cite> to <cite>hub_2</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">network</span><span class="o">.</span><span class="n">set_connection_power_bounds</span><span class="p">(</span><span class="n">hub_1</span><span class="p">,</span> <span class="n">hub_2</span><span class="p">,</span> <span class="n">power_lb</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">power_ub</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the connection <cite>hub_1</cite> to <cite>hub_2</cite> exists, the power that flows from <cite>hub_1</cite> to <cite>hub_2</cite> must always be in the range
+[0.4, 2] MW.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">network</span><span class="o">.</span><span class="n">set_connection_power_bounds</span><span class="p">(</span><span class="n">hub_1</span><span class="p">,</span> <span class="n">hub_2</span><span class="p">,</span> <span class="n">power_lb</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">network</span><span class="o">.</span><span class="n">set_connection_power_bounds</span><span class="p">(</span><span class="n">hub_2</span><span class="p">,</span> <span class="n">hub_1</span><span class="p">,</span> <span class="n">power_ub</span><span class="o">=-</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Both calls perform the same operation, but second call is forbidden to make things clearer.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">network</span><span class="o">.</span><span class="n">set_connection_power_bounds</span><span class="p">(</span><span class="n">hub_1</span><span class="p">,</span> <span class="n">hub_2</span><span class="p">,</span> <span class="n">power_lb</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">network</span><span class="o">.</span><span class="n">set_connection_power_bounds</span><span class="p">(</span><span class="n">hub_2</span><span class="p">,</span> <span class="n">hub_1</span><span class="p">,</span> <span class="n">power_lb</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The constraints implied by these calls make impossible the existence of both connections
+(from <cite>hub_1</cite> to <cite>hub_2</cite> and <cite>hub_2</cite> to <cite>hub_1</cite>): if 1000 kW of <cite>element</cite> flows from <cite>hub_1</cite> to <cite>hub_2</cite>
+then -1000 k&gt; flows from <cite>hub_2</cite> to <cite>hub_1</cite> (and vice versa).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.set_connection_status">
+<span class="sig-name descname"><span class="pre">set_connection_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hub_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hub_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.set_connection_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the connection status of the edge going from <cite>hub_1</cite> to <cite>hub_2</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hub_1</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be hubs from <cite>hubs</cite>.</p></li>
+<li><p><strong>hub_2</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be hubs from <cite>hubs</cite>.</p></li>
+<li><p><strong>status</strong> (<cite>status</cite> may take 5 values that are attributes of this instance:) – <ul>
+<li><p>no_connection: flow of <cite>element</cite> is forbidden</p></li>
+<li><p>connection: flow of <cite>element</cite> is possible</p></li>
+<li><p>optim_one_way_min: flow of <cite>element</cite> must exist in at least one direction
+(from hub_1 to hub_2, from hub_2 to hub_1 or in both directions)
+This status also defines the opposite status, e.g. defining ‘hub_1 to hub_2’ status defines the one of ‘hub_2 to hub_1’.</p></li>
+<li><p>optim_one_way_max: flow of <cite>element</cite> may exist in at most one direction
+(from hub_1 to hub_2 or from hub_2 to hub_1)
+This status also defines the opposite status, e.g. defining ‘hub_1 to hub_2’ status defines the one of ‘hub_2 to hub_1’.</p></li>
+<li><p>optim_two_ways: flow of <cite>element</cite> may exist in both directions
+(from hub_1 to hub_2 and from hub_2 to hub_1)
+This status also defines the opposite status, e.g. defining ‘hub_1 to hub_2’ status defines the one of ‘hub_2 to hub_1’.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Given two hubs <cite>hub_1</cite> and <cite>hub_2</cite>, the order of calls to <cite>set_connection_status</cite> matters.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">network</span><span class="o">.</span><span class="n">set_connection_status</span><span class="p">(</span><span class="n">hub_1</span><span class="p">,</span> <span class="n">hub_2</span><span class="p">,</span> <span class="n">network</span><span class="o">.</span><span class="n">no_direction</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">network</span><span class="o">.</span><span class="n">set_connection_status</span><span class="p">(</span><span class="n">hub_2</span><span class="p">,</span> <span class="n">hub_1</span><span class="p">,</span> <span class="n">network</span><span class="o">.</span><span class="n">optim_one_way_max</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">network</span><span class="o">.</span><span class="n">get_connection_status</span><span class="p">(</span><span class="n">hub_2</span><span class="p">,</span> <span class="n">hub_1</span><span class="p">)</span> <span class="o">==</span> <span class="n">network</span><span class="o">.</span><span class="n">get_connection_status</span><span class="p">(</span><span class="n">hub_1</span><span class="p">,</span> <span class="n">hub_2</span><span class="p">)</span>
+<span class="go">    True</span>
+</pre></div>
+</div>
+<p>The first line has no effect because the second one defines again the connection from <cite>hub_1</cite> to <cite>hub_2</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.set_node_status">
+<span class="sig-name descname"><span class="pre">set_node_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hub</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.set_node_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the connection status of every incoming and outcoming edge of a hub.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hub</strong> (<a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a>) – Must be from <cite>hubs</cite>.</p></li>
+<li><p><strong>status</strong> (<cite>status</cite> may take 5 values that are attributes of this instance:) – <ul>
+<li><p>no_connection: flow of <cite>element</cite> is forbidden</p></li>
+<li><p>connection: flow of <cite>element</cite> is possible</p></li>
+<li><p>optim_one_way_min: flow of <cite>element</cite> must exist in at least one direction
+(from hub_1 to hub_2, from hub_2 to hub_1 or in both directions)
+This status also defines the opposite status, e.g. defining ‘hub_1 to hub_2’ status defines the one of ‘hub_2 to hub_1’.</p></li>
+<li><p>optim_one_way_max: flow of <cite>element</cite> may exist in at most one direction
+(from hub_1 to hub_2 or from hub_2 to hub_1)
+This status also defines the opposite status, e.g. defining ‘hub_1 to hub_2’ status defines the one of ‘hub_2 to hub_1’.</p></li>
+<li><p>optim_two_ways: flow of <cite>element</cite> may exist in both directions
+(from hub_1 to hub_2 and from hub_2 to hub_1)
+This status also defines the opposite status, e.g. defining ‘hub_1 to hub_2’ status defines the one of ‘hub_2 to hub_1’.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.set_soil_properties">
+<span class="sig-name descname"><span class="pre">set_soil_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">soil_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">losses_direction:</span> <span class="pre">Both'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'Heat</span> <span class="pre">losses'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'Heat</span> <span class="pre">gains</span> <span class="pre">=</span> <span class="pre">'Both'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.set_soil_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the physical properties that define thermal losses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>soil_temperature</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>numpy.ndarray</em>) – In Kelvins (K).
+The temperature of the soil at the buried depth of the network pipes.</p></li>
+<li><p><strong>U</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>numpy.ndarray</em>) – In W/(m.K).
+Specific heat loss per routed meter. Includes both supply  and return pipes.</p></li>
+<li><p><strong>losses_direction</strong> (<em>{'Both'</em><em>, </em><em>'Heat losses'</em><em>, </em><em>'Heat gains'}</em><em>, </em><em>optional</em><em>, </em><em>default 'Both'</em>) – <p>Direction of the heat exchanges between the network infrastructure and the soil.
+Specifying ‘Heat losses’ (‘Heat gains’) allows to prevent from happening the case where
+cold (heat) must be produced in <cite>production_hub</cite> to compensate thermal gains (losses) in
+a district heating (district cooling) network, when thermal demand is lower than soil thermal exchanges.</p>
+<blockquote>
+<div><ul>
+<li><p>’Heat losses’: only thermal energy exchanges from the network to the soil are taken into account,
+others are set to 0.</p></li>
+<li><p>’Heat gains’: only thermal energy exchanges from the soil to the network are taken into account,
+others are set to 0.</p></li>
+<li><p>’Both’: all thermal energy exchanges are taken into account.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ol class="arabic">
+<li><p>The thermal energy exchanged between the network infrastructure and the soil is like:
+thermal_exchanges(t) = sign * U * network_length * ((T_warm(t)+T_cold(t)) / 2 - T_soil(t))
+With:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>network_length: the length of all the edges in the network.
+If connections are bidirectional, length is accounted for only once.</p></li>
+<li><p>T_warm(t): temperature of the warm vector of <cite>element</cite></p></li>
+<li><p>T_cold(t): temperature of the cold vector of <cite>element</cite></p></li>
+<li><p>T_soil(t): temperature of the soil</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>By default, set_soil_properties is called with <cite>soil_temperature</cite> =273+10, <cite>U</cite> =0.7, <cite>losses_direction</cite> =’Both’.</p></li>
+<li><p>This method does not assume pipes are laid down underground: setting a <cite>U</cite> value according to the <cite>soil_temperature</cite>
+value is enough to describe any surrounding environment of the pipes.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.set_status">
+<span class="sig-name descname"><span class="pre">set_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_hubs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.network.ThermalNetwork.set_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define the connection status of all edges except the ones involving a hub from <cite>excluded_hubs</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>status</strong> (<cite>status</cite> may take 5 values that are attributes of this instance:) – <ul>
+<li><p>no_connection: flow of <cite>element</cite> is forbidden</p></li>
+<li><p>connection: flow of <cite>element</cite> is possible</p></li>
+<li><p>optim_one_way_min: flow of <cite>element</cite> must exist in at least one direction
+(from hub_1 to hub_2, from hub_2 to hub_1 or in both directions)
+This status also defines the opposite status, e.g. defining ‘hub_1 to hub_2’ status defines the one of ‘hub_2 to hub_1’.</p></li>
+<li><p>optim_one_way_max: flow of <cite>element</cite> may exist in at most one direction
+(from hub_1 to hub_2 or from hub_2 to hub_1)
+This status also defines the opposite status, e.g. defining ‘hub_1 to hub_2’ status defines the one of ‘hub_2 to hub_1’.</p></li>
+<li><p>optim_two_ways: flow of <cite>element</cite> may exist in both directions
+(from hub_1 to hub_2 and from hub_2 to hub_1)
+This status also defines the opposite status, e.g. defining ‘hub_1 to hub_2’ status defines the one of ‘hub_2 to hub_1’.</p></li>
+</ul>
+</p></li>
+<li><p><strong>excluded_hubs</strong> (<em>list</em><em> of </em><a class="reference internal" href="tamos.Hub.html#tamos.Hub" title="tamos.Hub"><em>Hub</em></a><em>, </em><em>optional</em>) – All hubs from <cite>excluded_hubs</cite> must be part of <cite>hubs</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.network.ThermalNetwork.used_elements">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">used_elements</span></span><a class="headerlink" href="#tamos.network.ThermalNetwork.used_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elements used by the component.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.network.ThermalNetwork</a><ul>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.__init__"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.compute_actualized_cost"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.compute_actualized_cost()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.eco_count"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.eco_count</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.element"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.element</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.generate_MSP"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.generate_MSP()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.get_connection_power_bounds"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.get_connection_power_bounds()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.get_connection_status"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.get_connection_status()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.get_distance"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.get_distance()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.hubs"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.hubs</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.might_connect"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.might_connect()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.name"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.name</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.plot"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.plot()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.production_hub"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.production_hub</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.production_mode"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.production_mode</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.scale_factor"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.scale_factor</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.set_connection_power_bounds"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.set_connection_power_bounds()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.set_connection_status"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.set_connection_status()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.set_node_status"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.set_node_status()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.set_soil_properties"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.set_soil_properties()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.set_status"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.set_status()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.network.ThermalNetwork.used_elements"><code class="docutils literal notranslate"><span class="pre">ThermalNetwork.used_elements</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tamos.network.NonThermalNetwork.html"
+                          title="previous chapter">tamos.network.NonThermalNetwork</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tamos.network.HREThermalNetwork.html"
+                          title="next chapter">tamos.network.HREThermalNetwork</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.network.ThermalNetwork.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.network.HREThermalNetwork.html" title="tamos.network.HREThermalNetwork"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tamos.network.NonThermalNetwork.html" title="tamos.network.NonThermalNetwork"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../network_components.html" >Network components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.network.ThermalNetwork</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

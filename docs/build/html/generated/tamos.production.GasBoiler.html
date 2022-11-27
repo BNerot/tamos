@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.production.GasBoiler &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tamos.production.HeatExchanger" href="tamos.production.HeatExchanger.html" />
+    <link rel="prev" title="tamos.production.FPSolar" href="tamos.production.FPSolar.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.production.HeatExchanger.html" title="tamos.production.HeatExchanger"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tamos.production.FPSolar.html" title="tamos.production.FPSolar"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../production_components.html" accesskey="U">Production components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.production.GasBoiler</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-production-gasboiler">
+<h1>tamos.production.GasBoiler<a class="headerlink" href="#tamos-production-gasboiler" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.production.</span></span><span class="sig-name descname"><span class="pre">GasBoiler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_sink</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">given_sizing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units_number_ub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units_number_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eco_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.production.GasBoiler" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_sink</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">given_sizing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units_number_ub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units_number_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eco_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.production.GasBoiler.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>GasBoiler components produce heat given an energy efficiency of typical gas boilers.
+This efficiency takes into account the condensing property of flue gases.</p>
+<p>This component declares the following exported decision variables:</p>
+<ul class="simple">
+<li><p>X_P, binary.
+Whether the component is used by the hub.</p></li>
+<li><p>SP_P, continuous, in kW.
+The maximum capacity of the component. Defines the investment costs.</p></li>
+<li><p>For all t, for all element e, F_P(e, t), continuous, in kW.
+The power related to element e entering the component (i.e. leaving the hub interface).</p></li>
+<li><p>For all t, Q_P(t), continuous, in kW.
+The reference power related to the component. Defines the variable cost.
+This power is a lower bound of SP_P.
+There exists one element e such that Q_P(t) = F_P(e, t) or Q_P(t) = - F_P(e, t).
+For this component, e is <cite>energy_sink</cite>.</p></li>
+</ul>
+<p>This component declares the following KPIs:</p>
+<ul class="simple">
+<li><p><cite>COST_production</cite>
+In euros.
+Contributes to the “Eco” objective function.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy_source</strong> (<a class="reference internal" href="tamos.element.FuelVector.html#tamos.element.FuelVector" title="tamos.element.FuelVector"><em>FuelVector</em></a>) – Natural gas that is consumed.</p></li>
+<li><p><strong>energy_sink</strong> (<em>ThermalVectorPair</em>) – Thermal flow that is warmed up by the boiler.</p></li>
+<li><p><strong>properties</strong> (<em>dict {str: int</em><em> | </em><em>float}</em>) – <p>Techno-economic properties of the component.
+The <cite>properties</cite> attribute must include the following keys:</p>
+<ul>
+<li><p>”LB max output power (kW)”</p></li>
+<li><p>”UB max output power (kW)”</p></li>
+<li><p>”CAPEX (EUR/kW)”</p></li>
+<li><p>”OPEX (%CAPEX)”</p></li>
+<li><p>”Variable OPEX (EUR/MWh)”</p></li>
+</ul>
+</p></li>
+<li><p><strong>given_sizing</strong> (<em>int</em><em> or </em><em>float</em><em>, </em><em>optional</em>) – The maximum capacity of the component, in kW.
+Relates to decision variable ‘SP_P’.
+If specified, only the operation of this component is performed by the MILP solver.
+If let unknown, both sizing and operation are performed.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>units_number_lb</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default 1</em>) – The lower bound (upper bound) of the number of real components that this instance aims to stand for.
+Setting <cite>units_number_lb</cite> (<cite>units_number_ub</cite>) has a meaning if “LB max output power (kW)” property is
+different from 0.</p></li>
+<li><p><strong>units_number_ub</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default 1</em>) – The lower bound (upper bound) of the number of real components that this instance aims to stand for.
+Setting <cite>units_number_lb</cite> (<cite>units_number_ub</cite>) has a meaning if “LB max output power (kW)” property is
+different from 0.</p></li>
+<li><p><strong>eco_count</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default True</em>) – Whether this instance contributes to the system “Eco” KPI.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.__init__" title="tamos.production.GasBoiler.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(energy_source, energy_sink, properties)</p></td>
+<td><p>GasBoiler components produce heat given an energy efficiency of typical gas boilers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.compute_actualized_cost" title="tamos.production.GasBoiler.compute_actualized_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_actualized_cost</span></code></a>(CAPEX, OPEX, ...[, ...])</p></td>
+<td><p>Compute the cost of a component using its 'Lifetime' and 'Discount rate (%)' properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_efficiency</span></code>(T)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.set_efficiency_model" title="tamos.production.GasBoiler.set_efficiency_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_efficiency_model</span></code></a>(efficiency_function, pinch)</p></td>
+<td><p>Defines the efficiency of the conversion of <cite>energy_source</cite> to <cite>energy_sink</cite> using a function of the cold temperature of <cite>energy_sink</cite>.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.eco_count" title="tamos.production.GasBoiler.eco_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eco_count</span></code></a></p></td>
+<td><p>Whether this instance contributes to the system &quot;Eco&quot; KPI.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.efficiency" title="tamos.production.GasBoiler.efficiency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">efficiency</span></code></a></p></td>
+<td><p>Defines explicitly the efficiency of the conversion of <cite>energy_source</cite> to <cite>energy_sink</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.energy_sink" title="tamos.production.GasBoiler.energy_sink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_sink</span></code></a></p></td>
+<td><p>Thermal flow that is warmed up by the boiler.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_source</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.given_sizing" title="tamos.production.GasBoiler.given_sizing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">given_sizing</span></code></a></p></td>
+<td><p>The maximum capacity of the component, in kW.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.name" title="tamos.production.GasBoiler.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name of the instance</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.units_number_lb" title="tamos.production.GasBoiler.units_number_lb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units_number_lb</span></code></a></p></td>
+<td><p>The lower bound of the number of real components that this instance aims to stand for.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.units_number_ub" title="tamos.production.GasBoiler.units_number_ub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units_number_ub</span></code></a></p></td>
+<td><p>The upper bound of the number of real components that this instance aims to stand for.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.production.GasBoiler.used_elements" title="tamos.production.GasBoiler.used_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">used_elements</span></code></a></p></td>
+<td><p>Elements used by the component.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.compute_actualized_cost">
+<span class="sig-name descname"><span class="pre">compute_actualized_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CAPEX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OPEX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_lifetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.production.GasBoiler.compute_actualized_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the cost of a component using its ‘Lifetime’ and ‘Discount rate (%)’ properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CAPEX</strong> (<em>float</em>) – Capital Expenditure. Cost in euros paid every <cite>technical_lifetime</cite> periods.</p></li>
+<li><p><strong>OPEX</strong> (<em>float</em>) – Operational Expenditure. Cost in euros paid each period.</p></li>
+<li><p><strong>system_lifetime</strong> (<em>int</em>) – Number of periods defining the existence of the energy system.</p></li>
+<li><p><strong>lifetime</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of periods defining the existence of the component.
+If specified, overwrite the “Lifetime” property.</p></li>
+<li><p><strong>discount_rate</strong> (<em>float</em>) – In percent (%). Describes the importance of the economic amortization process, per period.
+If specified, overwrite the “Discount rate (%)” property.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>A 3-tuple (total_cost, CAPEX_share, OPEX_share) where</em></p></li>
+<li><p>* CAPEX_share is the share of total cost related to <cite>CAPEX</cite></p></li>
+<li><p>* OPEX_share is the share of total cost related to <cite>OPEX</cite></p></li>
+<li><p><em>* total_cost = CAPEX_share + OPEX_share</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Takes into account residual value of component in the case <cite>system_lifetime</cite> is not a multiple of <cite>lifetime</cite>.
+In this case, the last replacement occuring at period replacement_period is paid in proportion of ‘CAPEX’
+depending linearly on the number of periods left:
+CAPEX * (system_lifetime - replacement_period) / lifetime</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.eco_count">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">eco_count</span></span><a class="headerlink" href="#tamos.production.GasBoiler.eco_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this instance contributes to the system “Eco” KPI.
+bool</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.efficiency">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">efficiency</span></span><a class="headerlink" href="#tamos.production.GasBoiler.efficiency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines explicitly the efficiency of the conversion of <cite>energy_source</cite> to <cite>energy_sink</cite>.
+If called, replaces the definition of the efficiency using <cite>set_efficiency_model</cite> (default).
+int, float or numpy.ndarray</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.energy_sink">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">energy_sink</span></span><a class="headerlink" href="#tamos.production.GasBoiler.energy_sink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thermal flow that is warmed up by the boiler.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.given_sizing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">given_sizing</span></span><a class="headerlink" href="#tamos.production.GasBoiler.given_sizing" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum capacity of the component, in kW.
+Relates to decision variable ‘SP_P’.
+int or float</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#tamos.production.GasBoiler.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the instance</p>
+<p>This name is used in MILP model description.</p>
+<p>str
+names must not exceed 255 characters,
+all of which must be alphanumeric (a-z, A-Z, 0-9) or one of these symbols:
+! ” # $ % &amp; , . ; ? &#64; _ ‘ ’ { } ~.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.set_efficiency_model">
+<span class="sig-name descname"><span class="pre">set_efficiency_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">efficiency_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pinch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.production.GasBoiler.set_efficiency_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the efficiency of the conversion of <cite>energy_source</cite> to <cite>energy_sink</cite> using
+a function of the cold temperature of <cite>energy_sink</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>efficiency_function</strong> (<em>callable f</em><em>(</em><em>T</em><em>)</em>) – T is the temperature of the cold vector of <cite>energy_sink</cite>, in Kelvins (K).</p></li>
+<li><p><strong>pinch</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>numpy.ndarray</em>) – Temperature difference between the flue gases of the boiler and the cold vector of <cite>energy_sink</cite>, in Kelvins (K).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>By default, set_efficiency_model is called with the <cite>default_efficiency</cite> attribute of this instance and pinch = 2.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.units_number_lb">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units_number_lb</span></span><a class="headerlink" href="#tamos.production.GasBoiler.units_number_lb" title="Permalink to this definition">¶</a></dt>
+<dd><p>The lower bound of the number of real components that this instance aims to stand for.
+Setting <cite>units_number_lb</cite> has a meaning if “LB max output power (kW)” property is different from 0.
+int</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.units_number_ub">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units_number_ub</span></span><a class="headerlink" href="#tamos.production.GasBoiler.units_number_ub" title="Permalink to this definition">¶</a></dt>
+<dd><p>The upper bound of the number of real components that this instance aims to stand for.
+Setting <cite>units_number_ub</cite> has a meaning if “LB max output power (kW)” property is different from 0.
+int</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.production.GasBoiler.used_elements">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">used_elements</span></span><a class="headerlink" href="#tamos.production.GasBoiler.used_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elements used by the component.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.production.GasBoiler</a><ul>
+<li><a class="reference internal" href="#tamos.production.GasBoiler"><code class="docutils literal notranslate"><span class="pre">GasBoiler</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.__init__"><code class="docutils literal notranslate"><span class="pre">GasBoiler.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.compute_actualized_cost"><code class="docutils literal notranslate"><span class="pre">GasBoiler.compute_actualized_cost()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.eco_count"><code class="docutils literal notranslate"><span class="pre">GasBoiler.eco_count</span></code></a></li>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.efficiency"><code class="docutils literal notranslate"><span class="pre">GasBoiler.efficiency</span></code></a></li>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.energy_sink"><code class="docutils literal notranslate"><span class="pre">GasBoiler.energy_sink</span></code></a></li>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.given_sizing"><code class="docutils literal notranslate"><span class="pre">GasBoiler.given_sizing</span></code></a></li>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.name"><code class="docutils literal notranslate"><span class="pre">GasBoiler.name</span></code></a></li>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.set_efficiency_model"><code class="docutils literal notranslate"><span class="pre">GasBoiler.set_efficiency_model()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.units_number_lb"><code class="docutils literal notranslate"><span class="pre">GasBoiler.units_number_lb</span></code></a></li>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.units_number_ub"><code class="docutils literal notranslate"><span class="pre">GasBoiler.units_number_ub</span></code></a></li>
+<li><a class="reference internal" href="#tamos.production.GasBoiler.used_elements"><code class="docutils literal notranslate"><span class="pre">GasBoiler.used_elements</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tamos.production.FPSolar.html"
+                          title="previous chapter">tamos.production.FPSolar</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tamos.production.HeatExchanger.html"
+                          title="next chapter">tamos.production.HeatExchanger</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.production.GasBoiler.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.production.HeatExchanger.html" title="tamos.production.HeatExchanger"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tamos.production.FPSolar.html" title="tamos.production.FPSolar"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../production_components.html" >Production components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.production.GasBoiler</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

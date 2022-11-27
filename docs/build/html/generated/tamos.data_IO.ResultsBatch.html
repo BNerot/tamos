@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.data_IO.ResultsBatch &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tamos.data_IO.read_properties" href="tamos.data_IO.read_properties.html" />
+    <link rel="prev" title="tamos.data_IO.ResultsExport" href="tamos.data_IO.ResultsExport.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.data_IO.read_properties.html" title="tamos.data_IO.read_properties"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tamos.data_IO.ResultsExport.html" title="tamos.data_IO.ResultsExport"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../data_IO.html" accesskey="U">Data input and output</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.data_IO.ResultsBatch</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-data-io-resultsbatch">
+<h1>tamos.data_IO.ResultsBatch<a class="headerlink" href="#tamos-data-io-resultsbatch" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.data_IO.</span></span><span class="sig-name descname"><span class="pre">ResultsBatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">working_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">working_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not use. See <cite>create_batch</cite> and <cite>create_batch_from_binaries</cite> class methods.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.__init__" title="tamos.data_IO.ResultsBatch.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(working_dir[, name])</p></td>
+<td><p>Do not use.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.create_batch" title="tamos.data_IO.ResultsBatch.create_batch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_batch</span></code></a>(working_dir, description_matcher)</p></td>
+<td><p>A ResultsBatch instance binds ResultsExport instances together to ease the process of results analysis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.create_batch_from_binaries" title="tamos.data_IO.ResultsBatch.create_batch_from_binaries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_batch_from_binaries</span></code></a>(working_dir, ...)</p></td>
+<td><p>A ResultsBatch instance binds ResultsExport instances together to ease the process of results analysis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.dump_object" title="tamos.data_IO.ResultsBatch.dump_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dump_object</span></code></a>()</p></td>
+<td><p>Writes the binary form of this instance in the directory <cite>working_dir</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.load_object" title="tamos.data_IO.ResultsBatch.load_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_object</span></code></a>(path)</p></td>
+<td><p>Loads a binary ResultsExport or ResultsBatch object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.reduce_memory" title="tamos.data_IO.ResultsBatch.reduce_memory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_memory</span></code></a>(df)</p></td>
+<td><p>Reduces the memory used by a DataFrame by changing the data type of numerical columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.remove_descriptors" title="tamos.data_IO.ResultsBatch.remove_descriptors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_descriptors</span></code></a>(descriptors[, check_unique])</p></td>
+<td><p>Removes some descriptors, i.e. keys of attribute <cite>relevant_descriptor</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.remove_small_values" title="tamos.data_IO.ResultsBatch.remove_small_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_small_values</span></code></a>(df, name[, threshold, ...])</p></td>
+<td><p>Removes small numerical values from a dataframe containing decision variable or KPI values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.sum" title="tamos.data_IO.ResultsBatch.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sum</span></code></a>(RBs)</p></td>
+<td><p>Defines a unique ResultsBatch instance that is the sum of several instances.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.write_all" title="tamos.data_IO.ResultsBatch.write_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_all</span></code></a>()</p></td>
+<td><p>Writes the <cite>vars_</cite>, <cite>KPIs</cite> and <cite>results</cite> attributes as CSV files, in the directory <cite>working_dir</cite>.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch.working_dir" title="tamos.data_IO.ResultsBatch.working_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">working_dir</span></code></a></p></td>
+<td><p>Directory the results are read from or exported to.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.create_batch">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">working_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description_matcher</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_unknown_file_descriptor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_unknown_matcher_descriptor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upfront_processing_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_results_exports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">upfront_processing_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.create_batch" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ResultsBatch instance binds ResultsExport instances together to ease the process of results analysis.</p>
+<p>Important attributes of ResultsBatch instances are:
+* <cite>vars_</cite> : concatenation of the decision variables of the ResultsExport instances
+* <cite>KPIs</cite> : concatenation of the KPIs of the ResultsExport instances
+* <cite>results</cite> : other information about ResultsExport instances</p>
+<p>This method creates a ResultsBatch instance from ResultsExports stored on disk.
+It must be used when various optimization results are stored in the same directory and clearly identified by
+the <cite>description</cite> attribute of MILPModel instances.</p>
+<p>The ResultsExport instances to keep are specified using the <cite>keep_unknown_file_descriptor</cite> and
+<cite>keep_unknown_matcher_descriptor</cite> attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>working_dir</strong> (<em>str</em><em> or </em><em>path-like</em>) – The directory containing the ResultsExport results.
+This directory is typically the same than the one specified for the <cite>parent_working_dir</cite> argument of ResultsExport instances.
+This directory is also the one where the aggregated results will be written.</p></li>
+<li><p><strong>description_matcher</strong> (<em>dict {str: list</em><em>(</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>) </em><em>| </em><em>None}</em>) – <p>Any ResultsExport in <cite>working_dir</cite> having a <cite>description</cite> attribute matching <cite>description_matcher</cite> is kept.
+Let <cite>key</cite> and <cite>values</cite> such that description_matcher[key] = values.</p>
+<ul>
+<li><p>If <cite>values</cite> is None, every ResultsExports having <cite>key</cite> as a key of its <cite>description</cite> attribute is kept.</p></li>
+<li><p>Else, <cite>values</cite> is a list of int, float and str.
+A ResultsExports having <cite>key</cite> as a key of its <cite>description</cite> attribute is kept only if description[key] is one of <cite>values</cite>.</p></li>
+</ul>
+</p></li>
+<li><p><strong>keep_unknown_file_descriptor</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default True</em>) – If False, ResultsExports instances whose <cite>description</cite> attribute contains keys that are not keys of <cite>description_matcher</cite> are discarded.
+If True, these instances are kept only if the the conditions specified by the <cite>description_matcher</cite> attribute are met.</p></li>
+<li><p><strong>keep_unknown_matcher_descriptor</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default True</em>) – If False, ResultsExports instances whose <cite>description</cite> attribute lacks keys that are keys of <cite>description_matcher</cite> are discarded.
+If True, these instances are kept only if the the conditions specified by the <cite>description_matcher</cite> attribute are met.</p></li>
+<li><p><strong>upfront_processing_func</strong> (<em>callable f</em><em>(</em><em>x</em><em>)</em><em>, </em><em>optional.</em>) – Useful to process ResultsExport instances before they are aggregated into one single ResultsBatch.
+f must accept a ResultsExport instance and performs inplace.
+Attribute <cite>description</cite> of <cite>x</cite> must not be modified.</p></li>
+<li><p><strong>keep_results_exports</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default False</em>) – If True, all the ResultsExport instances that match the selection criteria are kept in the <cite>results_exports</cite> attribute (dict).</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of this instance.
+Setting a name may prevent the deletion of existing files during disk dump of this instance.</p></li>
+<li><p><strong>upfront_processing_kwargs</strong> (<em>optional</em>) – Keyword arguments passed to the <cite>upfront_processing_func</cite> callable, like: f(x, <a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>RB</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch" title="tamos.data_IO.ResultsBatch">ResultsBatch</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ol class="arabic simple">
+<li><p>The <cite>relevant_descriptors</cite> attribute is a dict summing-up the <cite>description</cite> attribute of the MILPModel instances.</p></li>
+<li><p>The ‘batch_analysis’ Jupyter Notebook requires a ResultsBatch instance.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.create_batch_from_binaries">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_batch_from_binaries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">working_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_exports:</span> <span class="pre">List</span> <span class="pre">of</span> <span class="pre">pp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upfront_processing_func=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**upfront_processing_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.create_batch_from_binaries" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ResultsBatch instance binds ResultsExport instances together to ease the process of results analysis.</p>
+<p>Important attributes of ResultsBatch instances are:
+* <cite>vars_</cite>: concatenation of the decision variables of the ResultsExport instances
+* <cite>KPIs</cite>: concatenation of the KPIs of the ResultsExport instances
+* <cite>results</cite>: other information about ResultsExport instances</p>
+<p>This method creates a ResultsBatch instance from a list of ResultsExports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>working_dir</strong> (<em>str</em><em> or </em><em>path-like</em>) – The directory where the aggregated results will be written.</p></li>
+<li><p><strong>results_exports</strong> (<em>list</em><em> of </em><a class="reference internal" href="tamos.data_IO.ResultsExport.html#tamos.data_IO.ResultsExport" title="tamos.data_IO.ResultsExport"><em>ResultsExport</em></a>) – ResultsExport instances that define the ResultsBatch instance. Duplicates will be ignored.</p></li>
+<li><p><strong>upfront_processing_func</strong> (<em>callable f</em><em>(</em><em>x</em><em>)</em><em>, </em><em>optional.</em>) – Useful to process ResultsExport instances before they are aggregated into one single ResultsBatch.
+f must accept a ResultsExport instance and performs inplace.
+Attribute <cite>description</cite> of <cite>x</cite> must not be modified.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of this instance.
+Setting a name may prevent the deletion of existing files during disk dump of this instance.</p></li>
+<li><p><strong>upfront_processing_kwargs</strong> (<em>optional</em>) – Keyword arguments passed to the <cite>upfront_processing_func</cite> callable, like: f(x, <a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>RB</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch" title="tamos.data_IO.ResultsBatch">ResultsBatch</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.dump_object">
+<span class="sig-name descname"><span class="pre">dump_object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.dump_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the binary form of this instance in the directory <cite>working_dir</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.load_object">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.load_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a binary ResultsExport or ResultsBatch object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> or </em><em>path-like</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>The loaded object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.reduce_memory">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reduce_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.reduce_memory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduces the memory used by a DataFrame by changing the data type of numerical columns.</p>
+<p>Data type of float and integer columns is changed for the type with the smallest memory usage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – </p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method works inplace, i.e. <cite>df</cite> is modified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.remove_descriptors">
+<span class="sig-name descname"><span class="pre">remove_descriptors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">descriptors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_unique</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.remove_descriptors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes some descriptors, i.e. keys of attribute <cite>relevant_descriptor</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>descriptors</strong> (<em>list</em><em> of </em><em>str</em>) – Must be a subset of the keys of <cite>relevant_descriptors</cite>.</p></li>
+<li><p><strong>check_unique</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default False</em>) – <p>Describes the method behavior when any of the descriptor in <cite>descriptors</cite> is associated with multiple values:</p>
+<blockquote>
+<div><ul>
+<li><p>If True, an AssertionError is raised.</p></li>
+<li><p>If False, descriptor is removed, leading to possible duplicated rows in attributes <cite>vars_</cite>, <cite>KPIs</cite> and <cite>results</cite></p></li>
+</ul>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.remove_small_values">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_small_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_zeros</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.remove_small_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes small numerical values from a dataframe containing decision variable or KPI values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of the column of <cite>df</cite> that contains the numerical values.</p></li>
+<li><p><strong>threshold</strong> (<em>int</em><em> or </em><em>float</em><em>, </em><em>optional</em><em>, </em><em>default 0.1</em>) – All values ‘x’ for which abs(x) &lt; <cite>threshold</cite> are replaced by 0.</p></li>
+<li><p><strong>drop_zeros</strong> (<em>{'Series'</em><em>, </em><em>'All'}</em><em>, </em><em>optional</em>) – <ul>
+<li><p>If not provided, all rows where <cite>name</cite> value is zero are kept.</p></li>
+<li><p>’Series’: each temporal data series is kept if at least one value in this serie is not zero.
+<cite>df</cite> must include a ‘Date’ column for <cite>drop_zeros`=’Series’ to be effective.
+A temporal data serie of `df</cite> is a subset of df such that only the ‘Date’ and <cite>name</cite> columns
+have changing values in this subset.</p></li>
+<li><p>’All’ : remove all rows where <cite>name</cite> value is zero.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method works inplace, i.e. <cite>df</cite> is modified.
+Near-zero values in column <cite>name</cite> are removed according to <cite>threshold</cite> and <cite>drop_zeros</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.sum">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">RBs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines a unique ResultsBatch instance that is the sum of several instances.</p>
+<p>Attributes <cite>vars_</cite>, <cite>KPIs</cite> and <cite>results</cite> are concatenated and merged.
+Attributes <cite>relevant_indicators</cite> are merged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>RBs</strong> (<em>list</em><em> of </em><a class="reference internal" href="#tamos.data_IO.ResultsBatch" title="tamos.data_IO.ResultsBatch"><em>ResultsBatch</em></a>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>RB</strong> – A ResultsBatch instance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#tamos.data_IO.ResultsBatch" title="tamos.data_IO.ResultsBatch">ResultsBatch</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ol class="arabic">
+<li><p>The addition operator ‘+’ may be used instead of a call to <cite>sum(RBs)</cite> for <cite>RBs</cite> of length 2,
+i.e. these two lines perform the same operation:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ResultsBatch</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">RB1</span><span class="p">,</span> <span class="n">RB2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">RB1</span> <span class="o">+</span> <span class="n">RB2</span>
+</pre></div>
+</div>
+</li>
+<li><p>The <cite>working_dir</cite> attribute of <cite>RB</cite> is the one of the first element of <cite>RBs</cite>.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.working_dir">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">working_dir</span></span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.working_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory the results are read from or exported to.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.data_IO.ResultsBatch.write_all">
+<span class="sig-name descname"><span class="pre">write_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tamos.data_IO.ResultsBatch.write_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the <cite>vars_</cite>, <cite>KPIs</cite> and <cite>results</cite> attributes as CSV files, in the directory <cite>working_dir</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.data_IO.ResultsBatch</a><ul>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch"><code class="docutils literal notranslate"><span class="pre">ResultsBatch</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.__init__"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.create_batch"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.create_batch()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.create_batch_from_binaries"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.create_batch_from_binaries()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.dump_object"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.dump_object()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.load_object"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.load_object()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.reduce_memory"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.reduce_memory()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.remove_descriptors"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.remove_descriptors()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.remove_small_values"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.remove_small_values()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.sum"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.sum()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.working_dir"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.working_dir</span></code></a></li>
+<li><a class="reference internal" href="#tamos.data_IO.ResultsBatch.write_all"><code class="docutils literal notranslate"><span class="pre">ResultsBatch.write_all()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tamos.data_IO.ResultsExport.html"
+                          title="previous chapter">tamos.data_IO.ResultsExport</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tamos.data_IO.read_properties.html"
+                          title="next chapter">tamos.data_IO.read_properties</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.data_IO.ResultsBatch.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.data_IO.read_properties.html" title="tamos.data_IO.read_properties"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tamos.data_IO.ResultsExport.html" title="tamos.data_IO.ResultsExport"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../data_IO.html" >Data input and output</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.data_IO.ResultsBatch</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

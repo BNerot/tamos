@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.elementIO.Cost &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tamos.elementIO.Grid" href="tamos.elementIO.Grid.html" />
+    <link rel="prev" title="ElementIO components" href="../element_IO_components.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.elementIO.Grid.html" title="tamos.elementIO.Grid"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../element_IO_components.html" title="ElementIO components"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../element_IO_components.html" accesskey="U">ElementIO components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.elementIO.Cost</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-elementio-cost">
+<h1>tamos.elementIO.Cost<a class="headerlink" href="#tamos-elementio-cost" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.elementIO.Cost">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.elementIO.</span></span><span class="sig-name descname"><span class="pre">Cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">carbon_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.elementIO.Cost" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.elementIO.Cost.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">carbon_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.elementIO.Cost.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the cost of buying energy from or selling energy to the outside of the energy system.
+A Cost instance must be passed to a Grid or Load instance to be effective.
+All costs are defined relatively to the flow of the <cite>element</cite> attribute of the Grid or Load instance.</p>
+<p>Cost instances declare the following KPIs:</p>
+<ul class="simple">
+<li><p><cite>COST_element</cite>
+In euros.
+Contributes to the “Eco” objective function. Related to the <cite>cost</cite> attribute.</p></li>
+<li><p><cite>Carbon tax</cite>
+In euros.
+Contributes to the “Eco” objective function. Related to the <cite>carbon_cost</cite> attribute.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cost</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Cost associated with a positive flow of <cite>element</cite>.
+In euros/kWh.
+Usually negative.</p></li>
+<li><p><strong>carbon_cost</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Cost associated with positive CO2 emissions regarding the flow of ‘element’.
+In euros/kgEqCO2.
+Usually positive.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span><span class="o">=</span>  <span class="n">Grid</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">electricity</span><span class="p">,</span> <span class="n">emissions</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cost</span> <span class="o">=</span> <span class="n">Cost</span><span class="p">(</span><span class="n">cost</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">carbon_cost</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span><span class="o">.</span><span class="n">element_cost</span> <span class="o">=</span> <span class="n">cost</span>
+</pre></div>
+</div>
+<p>The energy system paies 0.2€ to buy 1 kWh of <cite>electricity</cite> from <cite>grid</cite>,
+added to 0.3 * 0.1 = 0.03€ paid as a carbon tax.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.elementIO.Cost.__init__" title="tamos.elementIO.Cost.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([cost, carbon_cost, name])</p></td>
+<td><p>Defines the cost of buying energy from or selling energy to the outside of the energy system.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.elementIO.Cost.carbon_cost" title="tamos.elementIO.Cost.carbon_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">carbon_cost</span></code></a></p></td>
+<td><p>Cost associated with positive CO2 emissions regarding the flow of 'element'.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.elementIO.Cost.cost" title="tamos.elementIO.Cost.cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cost</span></code></a></p></td>
+<td><p>Cost associated with a positive flow of <cite>element</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.elementIO.Cost.name" title="tamos.elementIO.Cost.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name of the instance</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.elementIO.Cost.carbon_cost">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">carbon_cost</span></span><a class="headerlink" href="#tamos.elementIO.Cost.carbon_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cost associated with positive CO2 emissions regarding the flow of ‘element’.
+In euros/kgEqCO2.
+Usually positive.
+int, float or numpy.ndarray</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.elementIO.Cost.cost">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cost</span></span><a class="headerlink" href="#tamos.elementIO.Cost.cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cost associated with a positive flow of <cite>element</cite>.
+In euros/kWh.
+Usually negative.
+int, float or numpy.ndarray</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.elementIO.Cost.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#tamos.elementIO.Cost.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the instance</p>
+<p>This name is used in MILP model description.</p>
+<p>str
+names must not exceed 255 characters,
+all of which must be alphanumeric (a-z, A-Z, 0-9) or one of these symbols:
+! ” # $ % &amp; , . ; ? &#64; _ ‘ ’ { } ~.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.elementIO.Cost</a><ul>
+<li><a class="reference internal" href="#tamos.elementIO.Cost"><code class="docutils literal notranslate"><span class="pre">Cost</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.elementIO.Cost.__init__"><code class="docutils literal notranslate"><span class="pre">Cost.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Cost.carbon_cost"><code class="docutils literal notranslate"><span class="pre">Cost.carbon_cost</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Cost.cost"><code class="docutils literal notranslate"><span class="pre">Cost.cost</span></code></a></li>
+<li><a class="reference internal" href="#tamos.elementIO.Cost.name"><code class="docutils literal notranslate"><span class="pre">Cost.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../element_IO_components.html"
+                          title="previous chapter">ElementIO components</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tamos.elementIO.Grid.html"
+                          title="next chapter">tamos.elementIO.Grid</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.elementIO.Cost.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tamos.elementIO.Grid.html" title="tamos.elementIO.Grid"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../element_IO_components.html" title="ElementIO components"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../element_IO_components.html" >ElementIO components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.elementIO.Cost</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tamos.storage.Thermocline &#8212; tamos  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ElementIO components" href="../element_IO_components.html" />
+    <link rel="prev" title="tamos.storage.OneVector" href="tamos.storage.OneVector.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../element_IO_components.html" title="ElementIO components"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tamos.storage.OneVector.html" title="tamos.storage.OneVector"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../storage_components.html" accesskey="U">Storage components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.storage.Thermocline</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tamos-storage-thermocline">
+<h1>tamos.storage.Thermocline<a class="headerlink" href="#tamos-storage-thermocline" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tamos.storage.Thermocline">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tamos.storage.</span></span><span class="sig-name descname"><span class="pre">Thermocline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stored_TVP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">given_sizing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units_number_ub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units_number_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eco_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.storage.Thermocline" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tamos.storage.Thermocline.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stored_TVP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">given_sizing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units_number_ub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units_number_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eco_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.storage.Thermocline.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thermocline components model a perfectly stratified thermal energy storage.</p>
+<p>This component declares the following exported decision variables:</p>
+<ul class="simple">
+<li><p>X_S, binary.
+Whether the component is used by the hub.</p></li>
+<li><p>SE_S, continuous, in kg.
+The maximum energetical capacity of the component.</p></li>
+<li><p>For all t, E_S(t), continuous, in kg.
+State of charge of the storage.</p></li>
+<li><p>For all t, for all element e, F_S(e, t), continuous, in kW.
+The power related to element e entering the component (i.e. leaving the hub interface).</p></li>
+</ul>
+<p>This component declares the following KPIs:</p>
+<ul class="simple">
+<li><p><cite>COST_storage</cite>
+In euros.
+Contributes to the “Eco” objective function.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stored_TVP</strong> (<em>ThermalVectorPair</em>) – Stored element.
+Storage is full when its entire content is the incoming vector of <cite>stored_TVP</cite>.
+Please see note 2) for an explanation of the restriction regarding <cite>stored_TVP</cite>.</p></li>
+<li><p><strong>properties</strong> (<em>dict {str: int</em><em> | </em><em>float}</em>) – <p>Techno-economic properties of the component.</p>
+<p>The <cite>properties</cite> attribute must include the following keys:</p>
+<ul>
+<li><p>”LB max energy (kg)”</p></li>
+<li><p>”UB max energy (kg)”</p></li>
+<li><p>”Charge/discharge delay (h)”</p></li>
+<li><p>”Energy conservation (/h)”</p></li>
+<li><p>”CAPEX energy (EUR/kg)”</p></li>
+<li><p>”OPEX energy (%CAPEX)”</p></li>
+</ul>
+</p></li>
+<li><p><strong>given_sizing</strong> (<em>int</em><em> or </em><em>float</em><em>, </em><em>optional</em>) – The maximum capacity of the component, in kg.
+Relates to decision variable ‘SE_S’.
+If specified, only the operation of this component is performed by the MILP solver.
+If let unknown, both sizing and operation are performed.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>units_number_lb</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default 1</em>) – The lower bound (upper bound) of the number of real components that this instance aims to stand for.
+Setting <cite>units_number_lb</cite> (<cite>units_number_ub</cite>) has a meaning if “LB max energy (kg)” property is
+different from 0.</p></li>
+<li><p><strong>units_number_ub</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default 1</em>) – The lower bound (upper bound) of the number of real components that this instance aims to stand for.
+Setting <cite>units_number_lb</cite> (<cite>units_number_ub</cite>) has a meaning if “LB max energy (kg)” property is
+different from 0.</p></li>
+<li><p><strong>eco_count</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default True</em>) – Whether this instance contributes to the system “Eco” KPI.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ol class="arabic">
+<li><p>This modelisation is equivalent to 2 OneVector storages with the constraint
+state_of_charge_1 + state_of_charge_2 = state_of_charge
+(i.e.: the discharge of one side leads to the charge of the other side).</p></li>
+<li><p>The instantaneous energetical state of charge of the storage depends on the product m(t) x Cp(t) x DT(t) where:</p>
+<ul class="simple">
+<li><p>m(t) is the instantaneous mass state of charge of the storage (decision variable: E_S)</p></li>
+<li><p>Cp(t) is the specific heat capacity of <cite>stored_TVP</cite></p></li>
+<li><p>DT(t) is the temperature difference between incoming and outcoming flows of <cite>stored_TVP</cite></p></li>
+</ul>
+<p>Thus, in the general case, the storage can be charged when Cp(t) x DT(t) is low (requiring low charging power, decision variable: F_S)
+and discharged when Cp(t) x DT(t) is high; which has no physical meaning.
+For this reason, the Thermocline component must not be used with a ThermalVectorPair <cite>stored_TVP</cite> having a variable Cp(t) x DT(t) product.</p>
+</li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.storage.Thermocline.__init__" title="tamos.storage.Thermocline.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(stored_TVP[, properties, ...])</p></td>
+<td><p>Thermocline components model a perfectly stratified thermal energy storage.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.storage.Thermocline.compute_actualized_cost" title="tamos.storage.Thermocline.compute_actualized_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_actualized_cost</span></code></a>(CAPEX, OPEX, ...[, ...])</p></td>
+<td><p>Compute the cost of a component using its 'Lifetime' and 'Discount rate (%)' properties.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.storage.Thermocline.eco_count" title="tamos.storage.Thermocline.eco_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eco_count</span></code></a></p></td>
+<td><p>Whether this instance contributes to the system &quot;Eco&quot; KPI.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.storage.Thermocline.given_sizing" title="tamos.storage.Thermocline.given_sizing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">given_sizing</span></code></a></p></td>
+<td><p>The maximum capacity of the component, in kg (Thermocline) or kWh (OneVector).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.storage.Thermocline.name" title="tamos.storage.Thermocline.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name of the instance</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.storage.Thermocline.stored_TVP" title="tamos.storage.Thermocline.stored_TVP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stored_TVP</span></code></a></p></td>
+<td><p>Stored element.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.storage.Thermocline.units_number_lb" title="tamos.storage.Thermocline.units_number_lb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units_number_lb</span></code></a></p></td>
+<td><p>The lower bound of the number of real components that this instance aims to stand for.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tamos.storage.Thermocline.units_number_ub" title="tamos.storage.Thermocline.units_number_ub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units_number_ub</span></code></a></p></td>
+<td><p>The upper bound of the number of real components that this instance aims to stand for.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tamos.storage.Thermocline.used_elements" title="tamos.storage.Thermocline.used_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">used_elements</span></code></a></p></td>
+<td><p>Elements used by the component.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="tamos.storage.Thermocline.compute_actualized_cost">
+<span class="sig-name descname"><span class="pre">compute_actualized_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CAPEX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OPEX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_lifetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tamos.storage.Thermocline.compute_actualized_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the cost of a component using its ‘Lifetime’ and ‘Discount rate (%)’ properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CAPEX</strong> (<em>float</em>) – Capital Expenditure. Cost in euros paid every <cite>technical_lifetime</cite> periods.</p></li>
+<li><p><strong>OPEX</strong> (<em>float</em>) – Operational Expenditure. Cost in euros paid each period.</p></li>
+<li><p><strong>system_lifetime</strong> (<em>int</em>) – Number of periods defining the existence of the energy system.</p></li>
+<li><p><strong>lifetime</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of periods defining the existence of the component.
+If specified, overwrite the “Lifetime” property.</p></li>
+<li><p><strong>discount_rate</strong> (<em>float</em>) – In percent (%). Describes the importance of the economic amortization process, per period.
+If specified, overwrite the “Discount rate (%)” property.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>A 3-tuple (total_cost, CAPEX_share, OPEX_share) where</em></p></li>
+<li><p>* CAPEX_share is the share of total cost related to <cite>CAPEX</cite></p></li>
+<li><p>* OPEX_share is the share of total cost related to <cite>OPEX</cite></p></li>
+<li><p><em>* total_cost = CAPEX_share + OPEX_share</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Takes into account residual value of component in the case <cite>system_lifetime</cite> is not a multiple of <cite>lifetime</cite>.
+In this case, the last replacement occuring at period replacement_period is paid in proportion of ‘CAPEX’
+depending linearly on the number of periods left:
+CAPEX * (system_lifetime - replacement_period) / lifetime</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.storage.Thermocline.eco_count">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">eco_count</span></span><a class="headerlink" href="#tamos.storage.Thermocline.eco_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this instance contributes to the system “Eco” KPI.
+bool</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.storage.Thermocline.given_sizing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">given_sizing</span></span><a class="headerlink" href="#tamos.storage.Thermocline.given_sizing" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum capacity of the component, in kg (Thermocline) or kWh (OneVector).
+Relates to decision variable ‘SE_S’.
+If specified, only the operation of this component is performed by the MILP solver.
+If let unknown, both sizing and operation are performed.
+int or float</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.storage.Thermocline.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#tamos.storage.Thermocline.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the instance</p>
+<p>This name is used in MILP model description.</p>
+<p>str
+names must not exceed 255 characters,
+all of which must be alphanumeric (a-z, A-Z, 0-9) or one of these symbols:
+! ” # $ % &amp; , . ; ? &#64; _ ‘ ’ { } ~.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.storage.Thermocline.stored_TVP">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stored_TVP</span></span><a class="headerlink" href="#tamos.storage.Thermocline.stored_TVP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stored element.
+Storage is full when its entire content is the incoming vector of <cite>stored_TVP</cite>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.storage.Thermocline.units_number_lb">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units_number_lb</span></span><a class="headerlink" href="#tamos.storage.Thermocline.units_number_lb" title="Permalink to this definition">¶</a></dt>
+<dd><p>The lower bound of the number of real components that this instance aims to stand for.
+Setting <cite>units_number_lb</cite> has a meaning if “LB max output power (kW)” property is different from 0.
+int</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.storage.Thermocline.units_number_ub">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units_number_ub</span></span><a class="headerlink" href="#tamos.storage.Thermocline.units_number_ub" title="Permalink to this definition">¶</a></dt>
+<dd><p>The upper bound of the number of real components that this instance aims to stand for.
+Setting <cite>units_number_ub</cite> has a meaning if “LB max output power (kW)” property is different from 0.
+int</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tamos.storage.Thermocline.used_elements">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">used_elements</span></span><a class="headerlink" href="#tamos.storage.Thermocline.used_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elements used by the component.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tamos.storage.Thermocline</a><ul>
+<li><a class="reference internal" href="#tamos.storage.Thermocline"><code class="docutils literal notranslate"><span class="pre">Thermocline</span></code></a><ul>
+<li><a class="reference internal" href="#tamos.storage.Thermocline.__init__"><code class="docutils literal notranslate"><span class="pre">Thermocline.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.storage.Thermocline.compute_actualized_cost"><code class="docutils literal notranslate"><span class="pre">Thermocline.compute_actualized_cost()</span></code></a></li>
+<li><a class="reference internal" href="#tamos.storage.Thermocline.eco_count"><code class="docutils literal notranslate"><span class="pre">Thermocline.eco_count</span></code></a></li>
+<li><a class="reference internal" href="#tamos.storage.Thermocline.given_sizing"><code class="docutils literal notranslate"><span class="pre">Thermocline.given_sizing</span></code></a></li>
+<li><a class="reference internal" href="#tamos.storage.Thermocline.name"><code class="docutils literal notranslate"><span class="pre">Thermocline.name</span></code></a></li>
+<li><a class="reference internal" href="#tamos.storage.Thermocline.stored_TVP"><code class="docutils literal notranslate"><span class="pre">Thermocline.stored_TVP</span></code></a></li>
+<li><a class="reference internal" href="#tamos.storage.Thermocline.units_number_lb"><code class="docutils literal notranslate"><span class="pre">Thermocline.units_number_lb</span></code></a></li>
+<li><a class="reference internal" href="#tamos.storage.Thermocline.units_number_ub"><code class="docutils literal notranslate"><span class="pre">Thermocline.units_number_ub</span></code></a></li>
+<li><a class="reference internal" href="#tamos.storage.Thermocline.used_elements"><code class="docutils literal notranslate"><span class="pre">Thermocline.used_elements</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tamos.storage.OneVector.html"
+                          title="previous chapter">tamos.storage.OneVector</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../element_IO_components.html"
+                          title="next chapter">ElementIO components</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/tamos.storage.Thermocline.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../element_IO_components.html" title="ElementIO components"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tamos.storage.OneVector.html" title="tamos.storage.OneVector"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">tamos  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../storage_components.html" >Storage components</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tamos.storage.Thermocline</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, BNerot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>
