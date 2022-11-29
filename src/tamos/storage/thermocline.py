@@ -1,4 +1,4 @@
-from tamos.data_IO.data_IO import NamesFormatter, DataAccessors
+from ..data_IO.data_IO import NamesFormatter, DataAccessors
 from tamos.element import _ThermalVectorPair
 from .storage_base import Storage
 

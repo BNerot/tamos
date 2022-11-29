@@ -12,7 +12,7 @@ from tqdm import tqdm
 from time import perf_counter
 
 from .component import MetaComponent
-from tamos.data_IO.data_IO import DataAccessors, NamesFormatter
+from .data_IO.data_IO import DataAccessors, NamesFormatter
 from tamos.elementIO import _ElementIO
 from .hub import Hub
 from tamos.network import _Network
@@ -261,7 +261,7 @@ class TimeSettings:
                           for ind_t in range(len(self._t[:-1]))], [])
         ax = plot(array, label="Original array.")
         ax = plot(averaged_array, label="Array averaged according to the time_steps attribute.")
-        # legend()   # fixme uncomment
+        legend()
         tight_layout()
         return ax
 

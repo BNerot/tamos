@@ -1,7 +1,7 @@
 from copy import copy
 
-from tamos.data_IO.data_IO import NamesFormatter, DataAccessors
 from .elementIO_base import ElementIO
+from ..data_IO.data_IO import NamesFormatter, DataAccessors
 
 
 class Load(ElementIO):

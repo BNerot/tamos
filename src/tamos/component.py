@@ -1,4 +1,4 @@
-from tamos.data_IO.data_IO import DataAccessors, NamesFormatter
+from .data_IO.data_IO import DataAccessors, NamesFormatter
 
 
 class MetaComponent:

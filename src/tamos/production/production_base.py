@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from tamos.component import Component
-from tamos.data_IO.data_IO import NamesFormatter, DataAccessors
+from ..data_IO.data_IO import NamesFormatter, DataAccessors
 
 
 class Production(Component):
@@ -46,7 +46,7 @@ class Production(Component):
             assert units_number_ub >= self.units_number_lb, \
                 f"{self}: 'units_number_ub' must be higher or equal than 'units_number_lb'."
         self._units_number_ub = units_number_ub
-    # todo: everywhere: ajouter des vérifications du sens physique aux setters?
+
     @property
     def given_sizing(self):
         """

@@ -56,5 +56,7 @@ from tamos.component import MetaComponent
 allow_duplicated_names = MetaComponent._allow_duplicated_names
 reset_names_list = MetaComponent._reset
 use_name_in_MILP = NamesFormatter.use_name_in_MILP
+__version__ = "0.1.0"
+
 
 del MetaComponent, NamesFormatter

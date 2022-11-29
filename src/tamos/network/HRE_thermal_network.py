@@ -1,6 +1,6 @@
 from numpy import log, vectorize, sqrt, min
 
-from tamos.data_IO.data_IO import NamesFormatter, DataAccessors
+from ..data_IO.data_IO import NamesFormatter, DataAccessors
 from .network_base import Network
 from .thermal_network import ThermalNetwork
 

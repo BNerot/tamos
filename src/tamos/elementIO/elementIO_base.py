@@ -1,5 +1,5 @@
 from tamos.component import Component
-from tamos.data_IO.data_IO import DataAccessors, NamesFormatter
+from ..data_IO.data_IO import DataAccessors, NamesFormatter
 from tamos.element import ElectricityVector, FuelVector, ThermalVector, _ThermalVectorPair
 from tamos.elementIO.element_cost import Cost
 

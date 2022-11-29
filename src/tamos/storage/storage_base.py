@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from tamos.component import Component
-from tamos.data_IO.data_IO import DataAccessors, NamesFormatter
+from ..data_IO.data_IO import DataAccessors, NamesFormatter
 
 
 class Storage(Component):

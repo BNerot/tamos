@@ -1,5 +1,5 @@
 
-from tamos.data_IO.data_IO import NamesFormatter
+from ..data_IO.data_IO import NamesFormatter
 from tamos.element import FuelVector, ElectricityVector
 from .network_base import Network
 

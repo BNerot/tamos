@@ -1,10 +1,9 @@
 from itertools import chain
+
 from numpy import log, all, any
 
 from tamos.component import MetaComponent
-from tamos.data_IO.data_IO import DataAccessors
-
-
+from ..data_IO.data_IO import DataAccessors
 
 
 class Element(MetaComponent):
@@ -85,8 +84,8 @@ class Element(MetaComponent):
 
 
 class FuelVector(Element):
-    # Sources (uncertain):
-    # - gas: https://www.techniques-ingenieur.fr/res/pdf/encyclopedia/tiabl-bm2591-version1.pdf /
+    # Sources:
+    # - natural gas: https://www.techniques-ingenieur.fr/res/pdf/encyclopedia/tiabl-bm2591-version1.pdf /
     # "Gaz naturel - Energie fossile" / Richard TILAGONE
     # - biomass (wood): https://www.techniques-ingenieur.fr/res/pdf/encyclopedia/42593210-be8750.pdf /
     # "Production de chaleur à partir de bois - Émissions atmosphériques. Notions de base" / Erwan AUTRET, Yann RogAUME
@@ -98,7 +97,7 @@ class FuelVector(Element):
     #         plaquettes-forestieres-200804.pdf page 42
     #         Similar to http://mbaudin.free.fr/bois/combustible_bois.pdf page 12
     typical_flame_temperature = {"Natural gas": (1690 + 273),  # Carnot factor = 84.8% at 25°C
-                                 "Biomass": (800 + 273)}  # Carnot factor = 72.2% at 25°C
+                                 "Biomass": (800 + 273)}       # Carnot factor = 72.2% at 25°C
 
     def __init__(self, exergy_factor, name=None):
         """

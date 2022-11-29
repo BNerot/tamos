@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from tamos.component import MetaComponent
-from tamos.data_IO.data_IO import DataAccessors, NamesFormatter
+from ..data_IO.data_IO import DataAccessors, NamesFormatter
 
 class Cost(MetaComponent):
     def __init__(self, cost=None, carbon_cost=None, name=None):

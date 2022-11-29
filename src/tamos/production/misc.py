@@ -1,4 +1,4 @@
-from tamos.data_IO.data_IO import NamesFormatter, DataAccessors
+from ..data_IO.data_IO import NamesFormatter, DataAccessors
 from tamos.element import _ThermalVectorPair, _Element, ElectricityVector
 from .production_base import Production
 

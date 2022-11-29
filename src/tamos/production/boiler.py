@@ -1,6 +1,6 @@
 from numpy import where, maximum, ndim
 
-from tamos.data_IO.data_IO import NamesFormatter, DataAccessors
+from ..data_IO.data_IO import NamesFormatter, DataAccessors
 from tamos.element import _ThermalVectorPair, FuelVector, ElectricityVector
 from .production_base import Production
 

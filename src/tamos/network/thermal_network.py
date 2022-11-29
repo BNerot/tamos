@@ -1,6 +1,6 @@
 from numpy import minimum, maximum
 
-from tamos.data_IO.data_IO import NamesFormatter, DataAccessors
+from ..data_IO.data_IO import NamesFormatter, DataAccessors
 from tamos.element import _ThermalVectorPair
 from .network_base import Network
 

@@ -3,7 +3,7 @@ from pandas import DataFrame
 from sympy import ln, exp, var, Piecewise, lambdify
 
 
-from tamos.data_IO.data_IO import NamesFormatter, DataAccessors
+from ..data_IO.data_IO import NamesFormatter, DataAccessors
 from tamos.element import _ThermalVectorPair, ThermalVector, ElectricityVector
 from .production_base import Production
 

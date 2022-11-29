@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Mar 24 11:25:06 2020
-
-@author: BN261677
 """
 from functools import reduce, wraps
 from itertools import product, chain
 from os import listdir
-from pandas import DataFrame, Series, read_csv, concat, to_numeric
 from pathlib import Path
 from pickle import dump, load
+
 from numpy import ndarray, nan
+from pandas import DataFrame, Series, read_csv, concat, to_numeric
 from tqdm import tqdm
 
 
@@ -929,7 +928,7 @@ class ResultsBatch(ResultsIO):
         assert RBs and all([isinstance(RB, cls) for RB in RBs]), f"'RBs' must be an iterable of ResultsBatch objects."
         new_RB = cls(RBs[0]._working_dir, name="Results batch sum")
         new_RB._is_loaded = any([RB._is_loaded for RB in RBs])
-        new_RB.results = concat([RB.results for RB in RBs], ignore_index=True)           # old: merge(X, Y, how="outer")
+        new_RB.results = concat([RB.results for RB in RBs], ignore_index=True)       # old: merge(X, Y, how="outer")
 
         all_vars_names = set(chain(*[RB.vars_ for RB in RBs]))
         new_RB.vars_ = {}

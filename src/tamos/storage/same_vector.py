@@ -1,4 +1,4 @@
-from tamos.data_IO.data_IO import NamesFormatter
+from ..data_IO.data_IO import NamesFormatter
 from tamos.element import ElectricityVector, FuelVector
 from .storage_base import Storage
 

@@ -3,7 +3,7 @@ from itertools import chain
 from tqdm import tqdm
 
 from .component import MetaComponent
-from tamos.data_IO.data_IO import DataAccessors, NamesFormatter
+from .data_IO.data_IO import DataAccessors, NamesFormatter
 from tamos.element import _ThermalVectorPair, _Element
 from tamos.elementIO import _ElementIO
 from .mask import InterfaceMask

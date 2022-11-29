@@ -3,7 +3,7 @@ from numpy import ndim
 
 from tamos.element import _ThermalVectorPair, ElectricityVector, FuelVector
 from .production_base import Production
-from tamos.data_IO.data_IO import NamesFormatter, DataAccessors
+from ..data_IO.data_IO import NamesFormatter, DataAccessors
 
 
 class CHP(Production):

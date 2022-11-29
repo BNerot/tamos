@@ -4,7 +4,7 @@ from numpy import array, all
 from scipy.spatial.distance import cityblock
 
 from tamos.component import Component
-from tamos.data_IO.data_IO import DataAccessors, NamesFormatter
+from ..data_IO.data_IO import DataAccessors, NamesFormatter
 
 
 class Status(tuple):
@@ -612,7 +612,7 @@ class Network(Component):
                  for edge in self._network_graph.edges if self.get_connection_status(edge[0], edge[1]) != self.no_connection}
         edgelist = edges.keys()
         edge_color = edges.values()
-        draw_networkx(self._network_graph, pos=pos, edgelist=edgelist, edge_color=edge_color, arrowsize=35, node_color="white", ax=ax)
+        draw_networkx(self._network_graph, pos=pos, edgelist=edgelist, edge_color=edge_color, arrowsize=20, node_color="white", ax=ax)
         [ax.plot([0, 0.0001], [0, 0.0001], linewidth=1, c=color, label=status)  # fake plot to get a legend
          for status, color in [self.connection, self.no_connection, self.optim_one_way_min, self.optim_one_way_max, self.optim_two_ways]
          if (color in edge_color)]
